@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/ui/reusables/buttons/default_back_button.dart';
-import '../../../../core/ui/reusables/images/moushref_network_image.dart';
+import '../../../../core/ui/reusables/images/sync_network_image.dart';
 
 class CoverImageComponent extends StatelessWidget {
   const CoverImageComponent({super.key, required this.companyImageUrl, required this.logoImageUrl, required this.onBackPressed});

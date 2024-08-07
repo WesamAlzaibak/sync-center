@@ -5,7 +5,7 @@ import 'package:sync_center_mobile/dummy_data.dart';
 import 'package:sync_center_mobile/features/home/ui/components/home_header_component.dart';
 import 'package:sync_center_mobile/features/home/ui/components/projects_list_view.dart';
 
-import '../../../../core/ui/reusables/images/moushref_network_image.dart';
+import '../../../../core/ui/reusables/images/sync_network_image.dart';
 import '../../../../core/ui/theme/colors.dart';
 import '../../../projects/domain/entities/project.dart';
 import '../cubits/home_cubit/home_cubit.dart';

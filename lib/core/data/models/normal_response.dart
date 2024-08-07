@@ -12,9 +12,9 @@ class NormalResponse<T> {
   NormalResponse({required this.success, required this.data});
 
   factory NormalResponse.fromJson(
-          Map<String, dynamic> json,String objectType, T Function(Object?) fromJsonT) =>
-      _$NormalResponseFromJson(json,objectType, fromJsonT);
+          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
+      _$NormalResponseFromJson(json, fromJsonT);
 
-  Map<String, dynamic> toJson(String objectType,T Function(Object?) fromJsonT) =>
-      _$NormalResponseToJson(this,objectType, fromJsonT);
+  Map<String, dynamic> toJson(T Function(Object?) fromJsonT) =>
+      _$NormalResponseToJson(this, fromJsonT);
 }

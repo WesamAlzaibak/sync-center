@@ -1,5 +1,6 @@
 import 'package:sync_center_mobile/features/companies/domain/entities/company.dart';
 
+import 'features/files/domain/entities/project_file.dart';
 import 'features/projects/domain/entities/project.dart';
 import 'features/tasks/domain/entities/task.dart';
 import 'features/tasks/domain/enums/task_type.dart';
@@ -127,4 +128,40 @@ List<Task> tasks = [
     description: "this task should make the this task should make the this task should make the this task should make the this task should make the this task should make the this task should make the this task should make the this task should make the this task should make the ",
     id: 11, employeeName: 'Wesam Alzaibak', finishDate: DateTime(2024,5,23),
   ),
+];
+
+List<ProjectFile> projectFilesList = [
+  ProjectFile(
+    url: "http://192.168.1.8:8000/storage/5/[EgyBest].Avengers.Endgame.2019.BluRay.1080p.x264.mp4_snapshot_00.52.58.585.jpg",
+    userName: "R-Link",
+    userPicture:
+    "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
+    id: 1,
+    date: DateTime(2024,6,7),
+  ),
+  ProjectFile(
+    url: "http://192.168.1.8:8000/storage/2/منصة-التأشيرات.pdf",
+    userName: "R-Link",
+    userPicture:
+    "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
+    id: 1,
+    date: DateTime(2024,3,23),
+  ),
+  ProjectFile(
+    url: "http://192.168.1.8:8000/storage/3/text_for_testing.txt",
+    userName: "R-Link",
+    userPicture:
+    "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
+    id: 1,
+    date: DateTime(2023,8,20),
+  ),
+  ProjectFile(
+    url: "http://192.168.1.8:8000/storage/4/الفرونت-النقاقين.docx",
+    userName: "R-Link",
+    userPicture:
+    "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
+    id: 1,
+    date: DateTime(2023,6,9),
+  ),
+
 ];

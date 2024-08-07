@@ -21,6 +21,7 @@ import '../../../features/companies/ui/cubits/company_details/company_details_cu
 import '../../../features/companies/ui/screens/company_details_screen.dart';
 import '../../../features/firebase/ui/cubits/notifications_cubit/notifications_cubit.dart';
 import '../../../features/firebase/ui/screens/notifications_screen.dart';
+import '../../../features/projects/ui/screens/project_files_screen.dart';
 import '../../../features/projects/ui/screens/tasks_screen.dart';
 
 
@@ -131,6 +132,12 @@ final router = GoRouter(
             projectId: extra?["projectId"] ?? -1,
           ),
         );
+      },
+    ),
+    GoRoute(
+      path: ProjectFilesScreen.route,
+      builder: (context, state) {
+        return ProjectFilesScreen(projectName: 'Moushref',);
       },
     ),
   ]

@@ -13,6 +13,7 @@ import 'features/auth/ui/screens/login_screen.dart';
 import 'features/firebase/firebase.dart';
 import 'features/firebase/ui/screens/notifications_screen.dart';
 import 'features/projects/ui/screens/project_details_screen.dart';
+import 'features/projects/ui/screens/project_files_screen.dart';
 import 'features/projects/ui/screens/tasks_screen.dart';
 
 void main() async {
@@ -24,7 +25,7 @@ void main() async {
   if (isLoggedIn) {
     initialRoute = HomeScreen.route;
   } else {
-    initialRoute = ProjectDetailsScreen.route;
+    initialRoute = ProjectFilesScreen.route;
   }
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle.light.copyWith(

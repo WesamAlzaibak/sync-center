@@ -18,7 +18,7 @@ class ProjectApi {
       "/client/projects",
     );
     final normalResponse = NormalResponse.fromJson(
-        response.data ?? {},"projects",
+        response.data ?? {},
         (data) => PaginationResponse.fromJson(data as Map<String, dynamic>,
             (data) => ProjectDto.fromJson(data as Map<String, dynamic>)));
     return normalResponse.data.items;
@@ -29,7 +29,7 @@ class ProjectApi {
       RequestMethod.get,
       "/parent/students/$childId",
     );
-    final normalResponse = NormalResponse.fromJson(response.data ?? {},"projects",
+    final normalResponse = NormalResponse.fromJson(response.data ?? {},
         (data) => ProjectDto.fromJson(data as Map<String, dynamic>));
     return normalResponse.data;
   }

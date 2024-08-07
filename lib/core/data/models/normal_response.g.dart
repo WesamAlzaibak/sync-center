@@ -6,16 +6,16 @@ part of 'normal_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-NormalResponse<T> _$NormalResponseFromJson<T>(Map<String, dynamic> json,String objectType,
+NormalResponse<T> _$NormalResponseFromJson<T>(Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,) =>
     NormalResponse<T>(
       success: json['success'] as bool,
-      data: fromJsonT(json[objectType]),
+      data: fromJsonT(json['data']),
     );
 
-Map<String, dynamic> _$NormalResponseToJson<T>(NormalResponse<T> instance,String objectType,
+Map<String, dynamic> _$NormalResponseToJson<T>(NormalResponse<T> instance,
     Object? Function(T value) toJsonT,) =>
     <String, dynamic>{
       'success': instance.success,
-      objectType: toJsonT(instance.data),
+      'data': toJsonT(instance.data),
     };

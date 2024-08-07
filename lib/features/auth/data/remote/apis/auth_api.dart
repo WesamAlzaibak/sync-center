@@ -29,7 +29,7 @@ class AuthApi {
     }
 
     final normalResponse = NormalResponse.fromJson(
-      response.data!,"name",
+      response.data!,
           (data) => UserSystemEntriesDto.fromJson(data as Map<String, dynamic>),
     );
 

@@ -21,7 +21,6 @@ class TasksApi {
         body: tasksRequestDto);
     final normalResponse = NormalResponse.fromJson(
         response.data ?? {},
-        "tasks",
         (data) => PaginationResponse.fromJson(data as Map<String, dynamic>,
             (data) => TaskDto.fromJson(data as Map<String, dynamic>)));
     return normalResponse.data.items;

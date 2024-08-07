@@ -16,7 +16,7 @@ class CompanyApi {
       RequestMethod.get,
       "/client/companies/$companyId",
     );
-    final normalResponse = NormalResponse.fromJson(response.data ?? {},"company",
+    final normalResponse = NormalResponse.fromJson(response.data ?? {},
         (data) => CompanyDto.fromJson(data as Map<String, dynamic>));
     return normalResponse.data;
   }

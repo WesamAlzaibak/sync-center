@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/ui/reusables/images/moushref_network_image.dart';
+import '../../../../core/ui/reusables/images/sync_network_image.dart';
 import '../../../../core/ui/theme/colors.dart';
 
 class SupervisedByComponent extends StatelessWidget {

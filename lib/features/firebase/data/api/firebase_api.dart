@@ -38,7 +38,7 @@ class FirebaseApi {
       "/parents/notifications?page=$page&pageSize=$pageSize",
     );
     final normalResponse = NormalResponse.fromJson(
-        response.data ?? {},"notification",
+        response.data ?? {},
             (data) => PaginationResponse.fromJson(data as Map<String, dynamic>,
                 (data) => NotificationDto.fromJson(data as Map<String, dynamic>)));
     return normalResponse.data.items;

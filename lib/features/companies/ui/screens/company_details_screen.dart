@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sync_center_mobile/core/ui/reusables/images/moushref_network_image.dart';
+import 'package:sync_center_mobile/core/ui/reusables/images/sync_network_image.dart';
 import 'package:sync_center_mobile/core/utils/string.dart';
 
 import '../../../../core/ui/reusables/buttons/default_back_button.dart';

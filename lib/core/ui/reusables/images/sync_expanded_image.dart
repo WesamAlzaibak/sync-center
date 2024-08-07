@@ -1,16 +1,15 @@
+
 import 'package:flutter/material.dart';
 
-class SyncNetworkImage extends StatelessWidget {
-  const SyncNetworkImage({
+class SyncNetworkImageWithoutWidth extends StatelessWidget {
+  const SyncNetworkImageWithoutWidth({
     super.key,
     required this.imageUrl,
-    required this.width,
     required this.height,
     required this.fit,
   });
 
   final String imageUrl;
-  final double width;
   final double height;
   final BoxFit fit;
 
@@ -18,7 +17,6 @@ class SyncNetworkImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.network(
       imageUrl,
-      width: width,
       height: height,
       fit: fit,
       errorBuilder: (context, _, stacktrace) {

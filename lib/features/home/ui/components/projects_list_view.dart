@@ -3,7 +3,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:sync_center_mobile/core/ui/theme/colors.dart';
 import 'package:sync_center_mobile/features/projects/domain/entities/project.dart';
 
-import '../../../../core/ui/reusables/images/moushref_network_image.dart';
+import '../../../../core/ui/reusables/images/sync_network_image.dart';
 
 class MyProjectsListView extends StatelessWidget {
   const MyProjectsListView({
@@ -31,7 +31,7 @@ class MyProjectsListView extends StatelessWidget {
                   },
                   title: "Moushref Project For WEsam",
                   projectLogo:
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8kjNASp-t4VymZrnRo9hIMRSeTcWNarxbJw&s',
+                  'https://en.chessbase.com/thumb/91753',
                   description:
                   "Moushref Project \nIt is a post-oil plan for the Kingdom of Saudi Arabia that was announced on April 25, 2016 AD\ncoincides with the date specified for announcing the completion of the delivery of 80 giant government projects\nthe cost of each of which is no less than 3.7 billion riyals and up to 20 billion riyals, as in the Riyadh Metro project.\nThe plan was organized by the Council of Economic and Development Affairs\nheaded by Prince Mohammed bin Salman\nAnd was presented to the Council of Ministers headed by King Salman bin Abdulaziz Al Saud for approval\nThe public, private and non-profit sectors participate in achieving it.", companyName: 'R-Link', isLoading: true,
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../core/ui/reusables/images/moushref_network_image.dart';
+import '../../../../core/ui/reusables/images/sync_network_image.dart';
 import '../../../../core/ui/theme/colors.dart';
 import '../../../projects/domain/entities/project.dart';
 
