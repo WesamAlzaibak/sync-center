@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../core/ui/theme/colors.dart';
 
 class HomeHeaderComponent extends StatelessWidget {
-  const HomeHeaderComponent({super.key});
+  const HomeHeaderComponent({super.key, required this.userName});
+
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +22,10 @@ class HomeHeaderComponent extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Expanded(
+            Expanded(
               child: Text(
-                "Welcome Mr.Wesam Alzaibak",
-                style: TextStyle(
+                "Welcome Mr.$userName",
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.w700,

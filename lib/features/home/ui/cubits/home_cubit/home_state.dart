@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:sync_center_mobile/features/projects/domain/entities/project.dart';
+import 'package:sync_center_mobile/features/projects/domain/entities/user_projects.dart';
 
 
 class HomeState extends Equatable {
@@ -56,14 +56,14 @@ class HomeLoadingState extends HomeState {
 }
 
 class HomeSuccessState extends HomeState {
-  final List<Project> projects;
+  final List<UserProjects> projects;
 
   const HomeSuccessState(super.username, {required this.projects});
 
   @override
   HomeSuccessState copy({
     String? username,
-    List<Project>? projects,
+    List<UserProjects>? projects,
   }) =>
       HomeSuccessState(
         username ?? this.username,

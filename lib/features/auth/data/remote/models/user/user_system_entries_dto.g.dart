@@ -6,16 +6,14 @@ part of 'user_system_entries_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserSystemEntriesDto _$UserSystemEntriesDtoFromJson(
-        Map<String, dynamic> json) =>
+UserSystemEntriesDto _$UserSystemEntriesDtoFromJson(Map<String, dynamic> json) =>
     UserSystemEntriesDto(
-      userDto: UserDto.fromJson(json['user'] as Map<String, dynamic>),
-      token: json['token'] as String,
+      name: json['name'] as String,
+      token: json['access_token'] as String,
     );
 
-Map<String, dynamic> _$UserSystemEntriesDtoToJson(
-        UserSystemEntriesDto instance) =>
+Map<String, dynamic> _$UserSystemEntriesDtoToJson(UserSystemEntriesDto instance) =>
     <String, dynamic>{
-      'user': instance.userDto,
-      'token': instance.token,
+      'name': instance.name,
+      'access_token': instance.token,
     };

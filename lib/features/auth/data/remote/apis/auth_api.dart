@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 
-import '../../../../../core/data/models/normal_response.dart';
 import '../../../../../core/data/remote/remote_manager.dart';
 import '../models/forget_password/forget_password_credentials_dto.dart';
 import '../models/login/login_credentials/login_credentials_dto.dart';
@@ -24,16 +23,13 @@ class AuthApi {
       "/user/login",
       body: userCredentialsDto,
     );
-    if (response.data == null) {
-      throw Exception("Response data is null");
+    if(response.data!["success"]) {
+      final normalResponse = UserSystemEntriesDto.fromJson(response.data!);
+      return normalResponse;
     }
-
-    final normalResponse = NormalResponse.fromJson(
-      response.data!,
-          (data) => UserSystemEntriesDto.fromJson(data as Map<String, dynamic>),
-    );
-
-    return normalResponse.data;
+    else{
+      return response.data!["message"]["email"][0];
+    }
   }
 
   Future<void> resetPassword(

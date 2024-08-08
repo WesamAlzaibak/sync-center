@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -7,10 +8,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/ui/reusables/buttons/default_back_button.dart';
 import '../../../../core/ui/theme/colors.dart';
-import '../components/add_file_bottom_sheet_component.dart';
 
 class ProjectFilesScreen extends StatelessWidget {
-  ProjectFilesScreen({super.key, required this.projectName});
+   ProjectFilesScreen({super.key, required this.projectName});
 
   static const route = "/ProjectFilesScreen";
 
@@ -18,6 +18,15 @@ class ProjectFilesScreen extends StatelessWidget {
 
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
   GlobalKey<RefreshIndicatorState>();
+
+  void openFile()async{
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowMultiple: true
+    );
+    if(result !=null){
+      PlatformFile platformFile = result.files.first;
+    }
+  }
 
   Future<void> _launchInBrowser(String url) async {
     final Uri uri = Uri.parse(url);
@@ -87,10 +96,14 @@ class ProjectFilesScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-
+          backgroundColor: SyncColors.background,
+        onPressed: ()=>openFile(),
+        child: const Icon(
+          Icons.file_upload,
+          color: SyncColors.darkBlue,
+          size: 30,
+        ),
       ),
     );
   }
-
 }

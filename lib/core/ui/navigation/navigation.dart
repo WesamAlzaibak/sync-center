@@ -7,7 +7,6 @@ import 'package:sync_center_mobile/features/home/ui/screens/home_screen.dart';
 import 'package:sync_center_mobile/features/projects/ui/cubits/project_details/project_details_cubit.dart';
 import 'package:sync_center_mobile/features/projects/ui/cubits/tasks/tasks_cubit.dart';
 import 'package:sync_center_mobile/features/projects/ui/screens/project_details_screen.dart';
-import 'package:sync_center_mobile/features/tasks/domain/enums/task_type.dart';
 
 import '../../../di/di.dart';
 import '../../../features/auth/ui/blocs/forget_password/forget_password_cubit.dart';
@@ -74,8 +73,8 @@ final router = GoRouter(
         final projectId = extra?["projectId"] ?? 0;
         return BlocProvider<ProjectDetailsCubit>(
           create: (BuildContext context) {
-            final projectDetailsCubit = getIt.get<ProjectDetailsCubit>();
-              //..fetchProjectDetails(projectId: projectId);
+            final projectDetailsCubit = getIt.get<ProjectDetailsCubit>()
+              ..fetchProjectDetails(projectId: projectId);
             return projectDetailsCubit;
           },
           child: ProjectDetailsScreen(projectId: projectId),
@@ -87,8 +86,8 @@ final router = GoRouter(
       builder: (context, state) {
         return BlocProvider<HomeCubit>(
           create: (BuildContext context) {
-            final homeCubit = getIt.get<HomeCubit>();
-            //  ..fetchHomeData();
+            final homeCubit = getIt.get<HomeCubit>()
+              ..init();
             return homeCubit;
           },
           child: HomeScreen(),

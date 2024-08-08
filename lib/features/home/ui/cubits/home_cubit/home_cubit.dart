@@ -1,10 +1,9 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sync_center_mobile/features/auth/data/local/repositories/user_local_repository.dart';
-import 'package:sync_center_mobile/features/projects/domain/entities/project.dart';
 
 import '../../../../../core/utils/result.dart';
+import '../../../../projects/domain/entities/user_projects.dart';
 import '../../../../projects/domain/usecases/get_projects_use_case.dart';
 import 'home_state.dart';
 
@@ -23,6 +22,7 @@ class HomeCubit extends Cubit<HomeState> {
   void init() {
     final username = _userLocalRepository.getUser().name;
     emit(HomeInitialState(username));
+    fetchHomeData();
   }
 
   Future<void> fetchHomeData() async {
@@ -37,7 +37,7 @@ class HomeCubit extends Cubit<HomeState> {
     Result.evaluate(results).fold(
           (error) => emit(HomeErrorState(exception: error,state.username)),
           (data) {
-        final projects = data[0] as List<Project>;
+        final projects = data[0] as List<UserProjects>;
         if (projects.isEmpty) {
           emit(NoProjectState(state.username));
         }

@@ -1,8 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:sync_center_mobile/features/companies/ui/screens/company_details_screen.dart';
 import 'package:sync_center_mobile/features/home/ui/screens/home_screen.dart';
 import 'core/ui/navigation/navigation.dart';
 import 'core/ui/theme/colors.dart';
@@ -11,10 +9,7 @@ import 'di/di.dart';
 import 'features/auth/data/local/repositories/auth_local_repository.dart';
 import 'features/auth/ui/screens/login_screen.dart';
 import 'features/firebase/firebase.dart';
-import 'features/firebase/ui/screens/notifications_screen.dart';
-import 'features/projects/ui/screens/project_details_screen.dart';
-import 'features/projects/ui/screens/project_files_screen.dart';
-import 'features/projects/ui/screens/tasks_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +20,7 @@ void main() async {
   if (isLoggedIn) {
     initialRoute = HomeScreen.route;
   } else {
-    initialRoute = ProjectFilesScreen.route;
+    initialRoute = LoginScreen.route;
   }
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle.light.copyWith(

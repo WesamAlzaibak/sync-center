@@ -1,3 +1,3 @@
 class ApiRoutes {
-  static const String devApi = "http://192.168.146.1:8000";
+  static const String devApi = "http://192.168.1.8:8000";
 }

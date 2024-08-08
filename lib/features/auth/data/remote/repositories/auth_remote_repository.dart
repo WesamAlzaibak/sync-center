@@ -24,7 +24,6 @@ class AuthRemoteRepository {
       email: email,
       password: password,
     );
-    print("send to api");
     return await asyncRunCatching<User>(() async {
       final userSystemEntries =
           await _authApi.login(userCredentialsDto: loginRequestDto);

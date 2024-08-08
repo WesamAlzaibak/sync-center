@@ -5,16 +5,15 @@ part 'user_system_entries_dto.g.dart';
 
 @JsonSerializable()
 class UserSystemEntriesDto {
-  @JsonKey(name: "user")
-  final UserDto userDto;
+  @JsonKey(name: "name")
+  final String name;
   @JsonKey(name: "access_token")
   final String token;
 
-  UserSystemEntriesDto({required this.userDto, required this.token});
+  UserSystemEntriesDto({required this.name, required this.token});
 
   factory UserSystemEntriesDto.fromJson(Map<String, dynamic> json) =>
       _$UserSystemEntriesDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserSystemEntriesDtoToJson(this);
-
 }

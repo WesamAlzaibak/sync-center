@@ -5,7 +5,7 @@ import '../models/user/user_system_entries_dto.dart';
 
 extension UserSystemEntiresDtoX on UserSystemEntriesDto {
   User toUser() => User(
-        name: userDto.name,
+        name: name,
         token: token,
       );
 }

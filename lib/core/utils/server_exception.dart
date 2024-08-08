@@ -17,10 +17,9 @@ class ServerException implements Exception {
 extension DioExceptionX on DioException {
   ServerException toServerException() {
     final statusCode = response?.statusCode ?? 0;
-    final message = response?.data['errors'][0];
     return ServerException(
         statusCode: statusCode,
-        message: (message ?? "Unknown Error") as String,
+        message: ("some thing went wrong"),
         details: List.empty()
     );
   }

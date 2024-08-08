@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:sync_center_mobile/core/ui/theme/colors.dart';
-import 'package:sync_center_mobile/features/projects/domain/entities/project.dart';
 
 import '../../../../core/ui/reusables/images/sync_network_image.dart';
+import '../../../../core/utils/date.dart';
+import 'package:intl/intl.dart';
+import '../../../projects/domain/entities/user_projects.dart';
 
 class MyProjectsListView extends StatelessWidget {
   const MyProjectsListView({
@@ -14,8 +16,8 @@ class MyProjectsListView extends StatelessWidget {
   });
 
   final bool isLoading;
-  final List<Project> projects;
-  final void Function(Project) onProjectClick;
+  final List<UserProjects> projects;
+  final void Function(int) onProjectClick;
 
   @override
   Widget build(BuildContext context) {
@@ -23,30 +25,21 @@ class MyProjectsListView extends StatelessWidget {
       enabled: isLoading,
       child: ListView.separated(
         itemBuilder: (context, index) {
-          return
-                isLoading
-                  ? _ProjectItem(
-                  onClick: () {
-                    onProjectClick(projects[index]);
-                  },
+          return isLoading
+              ? _ProjectItem(
+                  onClick: () {},
                   title: "Moushref Project For WEsam",
-                  projectLogo:
-                  'https://en.chessbase.com/thumb/91753',
-                  description:
-                  "Moushref Project \nIt is a post-oil plan for the Kingdom of Saudi Arabia that was announced on April 25, 2016 AD\ncoincides with the date specified for announcing the completion of the delivery of 80 giant government projects\nthe cost of each of which is no less than 3.7 billion riyals and up to 20 billion riyals, as in the Riyadh Metro project.\nThe plan was organized by the Council of Economic and Development Affairs\nheaded by Prince Mohammed bin Salman\nAnd was presented to the Council of Ministers headed by King Salman bin Abdulaziz Al Saud for approval\nThe public, private and non-profit sectors participate in achieving it.", companyName: 'R-Link', isLoading: true,
-
+                  projectLogo: 'https://en.chessbase.com/thumb/91753',
+                  date: DateTime(2026, 4, 5),
                 )
-                  :
-              _ProjectItem(
-            onClick: () {
-              onProjectClick(projects[index]);
-            },
-            title: "Moushref Project For WEsam",
-            projectLogo:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8kjNASp-t4VymZrnRo9hIMRSeTcWNarxbJw&s',
-            description:
-                "Moushref Project \nIt is a post-oil plan for the Kingdom of Saudi Arabia that was announced on April 25, 2016 AD\ncoincides with the date specified for announcing the completion of the delivery of 80 giant government projects\nthe cost of each of which is no less than 3.7 billion riyals and up to 20 billion riyals, as in the Riyadh Metro project.\nThe plan was organized by the Council of Economic and Development Affairs\nheaded by Prince Mohammed bin Salman\nAnd was presented to the Council of Ministers headed by King Salman bin Abdulaziz Al Saud for approval\nThe public, private and non-profit sectors participate in achieving it.", companyName: 'R-Link', isLoading: false,
-          );
+              : _ProjectItem(
+                  onClick: () {
+                    onProjectClick(index);
+                  },
+                  title: projects[index].name,
+                  projectLogo: projects[index].logo,
+                  date: projects[index].createdDate,
+                );
         },
         padding: const EdgeInsets.all(0),
         shrinkWrap: true,
@@ -55,7 +48,7 @@ class MyProjectsListView extends StatelessWidget {
         separatorBuilder: (BuildContext context, int index) {
           return const SizedBox(height: 12);
         },
-        itemCount: projects.length,
+        itemCount: isLoading?3:projects.length,
       ),
     );
   }
@@ -66,15 +59,12 @@ class _ProjectItem extends StatelessWidget {
     required this.title,
     required this.projectLogo,
     required this.onClick,
-    required this.isLoading,
-    required this.description, required this.companyName,
+    required this.date,
   });
 
   final String title;
   final String projectLogo;
-  final String description;
-  final String companyName;
-  final bool isLoading;
+  final DateTime date;
   final void Function() onClick;
 
   @override
@@ -85,87 +75,74 @@ class _ProjectItem extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
         onTap: onClick,
-        child: Skeletonizer(
-          enabled: isLoading,
-          child: Container(
-            decoration: BoxDecoration(
+        child: Container(
+          decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  blurStyle: BlurStyle.outer,
-                  blurRadius: 16,
-                  spreadRadius: 0,
-                    offset: const Offset(0,4),
-                  color: SyncColors.black.withOpacity(0.12)
-                )
-              ]
+                    blurStyle: BlurStyle.outer,
+                    blurRadius: 16,
+                    spreadRadius: 0,
+                    offset: const Offset(0, 4),
+                    color: SyncColors.black.withOpacity(0.12))
+              ]),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 25,
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 25,
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 50,
-                        child: SyncNetworkImage(
-                          imageUrl: projectLogo,
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.fill,
-                        ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundColor: SyncColors.lightBlue,
+                      child: projectLogo==''?Text(
+                        title[0].toUpperCase(),
+                      style: const TextStyle(
+                        color: SyncColors.darkBlue,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 25,
                       ),
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              title,
-                              style: const TextStyle(
-                                overflow: TextOverflow.ellipsis,
-                                color: SyncColors.f1,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 24,
-                              ),
-                              maxLines: 2,
-                            ),
-                            const SizedBox(height: 2),
-                                Text(
-                                  "Supervised by $companyName Company",
-                                  style: const TextStyle(
-                                    overflow: TextOverflow.ellipsis,
-                                    color: SyncColors.background,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12,
-                                  ),
-                                  maxLines: 2,
-                                ),
-                          ],
-                        ),
+                      ):SyncNetworkImage(
+                        imageUrl: projectLogo,
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.fill,
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    description,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      color: SyncColors.f1
                     ),
-                  )
-                ],
-              ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          overflow: TextOverflow.ellipsis,
+                          color: SyncColors.f1,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 24,
+                        ),
+                        maxLines: 2,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Created Time : ${isToday(date) ? "today" : DateFormat('dd/MM/yyyy').format(date)}",
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: SyncColors.grey,
+                  ),
+                )
+              ],
             ),
           ),
         ),

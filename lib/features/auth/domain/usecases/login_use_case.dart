@@ -23,20 +23,15 @@ class LoginUseCase {
 
   Future<Result<User>> call(
       {required String email, required String password}) async {
-    print("begin of userCase");
     final loginResult = await _authRemoteRepository.login(
         email: email, password: password);
     return loginResult.fold(
       (error) => Result.failure(error),
       (data) async {
-        print("1");
         final token = data.token;
-        print("2");
         await _authLocalRepository.setToken(token);
         await _authLocalRepository.setLoggedIn();
-        print("3");
         await _userLocalRepository.setUser(data.toUserPref());
-        print("4");
         return Result.success(data);
       },
     );
