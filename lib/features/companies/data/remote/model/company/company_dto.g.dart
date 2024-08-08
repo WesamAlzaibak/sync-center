@@ -9,13 +9,13 @@ part of 'company_dto.dart';
 CompanyDto _$CompanyDtoFromJson(Map<String, dynamic> json) => CompanyDto(
       name: json['name'] as String,
       id: (json['id'] as num).toInt(),
-     // description: json["description"] as String,
-     // location: json["location"] as String,
+      // description: json["description"] as String,
+      // location: json["location"] as String,
       email: json["email"] as String,
       phoneNumber: json["phone"] as String,
-      imageUrl: json['logo'] as String,
+      logo: json['logo'] as String,
       projectsNumber: (json['projects_count'] as num).toInt(),
-     // employeesNumber:
+      // employeesNumber:
       //(json['employeesNumber'] as num).toInt(),
     );
 
@@ -29,5 +29,5 @@ Map<String, dynamic> _$CompanyDtoToJson(CompanyDto instance) =>
       'phone': instance.phoneNumber,
       //'employeesNumber': instance.employeesNumber,
       'projects_count': instance.projectsNumber,
-      'logo': instance.imageUrl,
+      'logo': instance.logo,
     };

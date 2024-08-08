@@ -29,6 +29,7 @@ class ProjectBaseInformationComponent extends StatelessWidget {
           logoImageUrl: project.logo,
           onBackPressed: onBackClick,
           companyName: companyName,
+          projectName: project.name,
         ),
         const SizedBox(
           height: 10,

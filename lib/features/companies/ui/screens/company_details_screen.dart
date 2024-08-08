@@ -64,7 +64,7 @@ class CompanyDetailsScreen extends StatelessWidget {
                                     backgroundColor: SyncColors.darkBlue,
                                     child: CircleAvatar(
                                       radius: 50,
-                                      child: state.company.imageUrl == ""
+                                      child: state.company.logo.isEmpty
                                           ? Center(
                                               child: Text(
                                                 state.company.name[0]
@@ -78,10 +78,10 @@ class CompanyDetailsScreen extends StatelessWidget {
                                             )
                                           : ClipOval(
                                               child: SyncNetworkImage(
-                                                imageUrl: state.company.imageUrl
-                                                        .isEmpty
-                                                    ? ""
-                                                    : state.company.imageUrl,
+                                                imageUrl:
+                                                    state.company.logo.isEmpty
+                                                        ? ""
+                                                        : state.company.logo,
                                                 width: 100.0,
                                                 height: 100.0,
                                                 fit: BoxFit.cover,

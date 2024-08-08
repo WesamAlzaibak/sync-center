@@ -55,6 +55,10 @@ import '../features/companies/ui/cubits/company_details/company_details_cubit.da
 import '../features/files/data/remote/apis/file_api.dart' as _i41;
 import '../features/files/data/remote/repositories/file_repository.dart'
     as _i42;
+import '../features/files/domain/usecases/get_project_files_use_case.dart'
+    as _i47;
+import '../features/files/domain/usecases/upload_project_file_use_case.dart'
+    as _i49;
 import '../features/firebase/data/api/firebase_api.dart' as _i37;
 import '../features/firebase/data/repositories/firebase_repository.dart'
     as _i38;
@@ -72,6 +76,8 @@ import '../features/projects/domain/usecases/get_projects_use_case.dart'
     as _i30;
 import '../features/projects/ui/cubits/project_details/project_details_cubit.dart'
     as _i32;
+import '../features/projects/ui/cubits/project_files/project_files_cubit.dart'
+    as _i50;
 import '../features/projects/ui/cubits/tasks/tasks_cubit.dart' as _i46;
 import '../features/tasks/data/remote/api/tasks_api.dart' as _i43;
 import '../features/tasks/data/remote/repositories/tasks_repository.dart'
@@ -185,6 +191,15 @@ extension GetItInjectableX on _i1.GetIt {
         tasksRemoteRepository: gh<_i44.TasksRemoteRepository>()));
     gh.factory<_i46.ProjectTasksCubit>(() => _i46.ProjectTasksCubit(
         getProjectTasksUseCase: gh<_i45.GetProjectTasksUseCase>()));
+    gh.factory<_i47.GetProjectFilesUseCase>(() => _i47.GetProjectFilesUseCase(
+        fileRemoteRepository: gh<_i42.FileRemoteRepository>()));
+    gh.factory<_i49.UploadProjectFileUseCase>(() =>
+        _i49.UploadProjectFileUseCase(
+            fileRemoteRepository: gh<_i42.FileRemoteRepository>()));
+    gh.factory<_i50.ProjectFilesCubit>(() => _i50.ProjectFilesCubit(
+          getProjectFilesUseCase: gh<_i47.GetProjectFilesUseCase>(),
+          uploadProjectFileUseCase: gh<_i49.UploadProjectFileUseCase>(),
+        ));
     return this;
   }
 }

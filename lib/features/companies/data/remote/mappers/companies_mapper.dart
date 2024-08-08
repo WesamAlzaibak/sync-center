@@ -12,8 +12,9 @@ extension CompanyDtoX on CompanyDto {
         phoneNumber: phoneNumber,
         //employeesNumber: employeesNumber,
         //location: location,
-        imageUrl: imageUrl.isEmpty?"":
-            imageUrl.replaceAll("http://192.168.146.1:8000", ApiRoutes.devApi),
+        logo: logo.isEmpty
+            ? ""
+            : logo.replaceAll("http://192.168.146.1:8000", ApiRoutes.devApi),
       );
 }
 

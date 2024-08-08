@@ -10,12 +10,14 @@ class CoverImageComponent extends StatelessWidget {
       required this.companyImageUrl,
       required this.logoImageUrl,
       required this.onBackPressed,
-      required this.companyName});
+      required this.companyName,
+      required this.projectName});
 
   final String companyImageUrl;
   final String logoImageUrl;
   final void Function() onBackPressed;
   final String companyName;
+  final String projectName;
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +55,25 @@ class CoverImageComponent extends StatelessWidget {
             backgroundColor: Colors.white,
             child: CircleAvatar(
               radius: 77.5,
-              child: ClipOval(
-                child: SyncNetworkImage(
-                  imageUrl: logoImageUrl,
-                  width: 155,
-                  height: 155,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              child: logoImageUrl.isEmpty
+                  ? Center(
+                      child: Text(
+                        projectName[0].toUpperCase(),
+                        style: const TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.w700,
+                          color: SyncColors.darkBlue,
+                        ),
+                      ),
+                    )
+                  : ClipOval(
+                      child: SyncNetworkImage(
+                        imageUrl: logoImageUrl,
+                        width: 155,
+                        height: 155,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
             ),
           ),
         ),

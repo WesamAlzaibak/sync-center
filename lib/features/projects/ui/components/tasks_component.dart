@@ -29,8 +29,15 @@ class TasksComponent extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [BoxShadow(spreadRadius: 16,blurStyle: BlurStyle.inner,offset: const Offset(0, 4),blurRadius: 0,color: Colors.grey[100]!.withOpacity(0.4),)]
-              ),
+                boxShadow: [
+                  BoxShadow(
+                    blurStyle: BlurStyle.outer,
+                    blurRadius: 16,
+                    spreadRadius: 0,
+                    offset: const Offset(0, 4),
+                    color: SyncColors.darkBlue.withOpacity(0.3),
+                  ),
+                ],              ),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(

@@ -4,11 +4,11 @@ import '../../theme/colors.dart';
 
 class DefaultBackButton extends StatelessWidget {
   const DefaultBackButton({
-    Key? key,
+    super.key,
     required this.onPressed,
-    this.backgroundColor = SyncColors.background,
+    this.backgroundColor = SyncColors.lightBlue,
     this.iconColor = SyncColors.black,
-  }) : super(key: key);
+  });
 
   final VoidCallback onPressed;
   final Color iconColor;
@@ -29,8 +29,8 @@ class DefaultBackButton extends StatelessWidget {
           child: Icon(
             Icons.arrow_back,
             color: iconColor,
-            size: 16,
-            weight: 20,
+            size: 18,
+            weight: 50,
           ),
         ),
       ),

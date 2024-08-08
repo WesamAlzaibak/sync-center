@@ -12,7 +12,7 @@ class Company extends Equatable {
   final int projectsNumber;
 
   //final int employeesNumber;
-  final String imageUrl;
+  final String logo;
 
   const Company({
     required this.name,
@@ -21,7 +21,7 @@ class Company extends Equatable {
     required this.email,
     //required this.location,
     required this.phoneNumber,
-    required this.imageUrl,
+    required this.logo,
     required this.projectsNumber,
     //required this.employeesNumber,
   });
@@ -34,7 +34,7 @@ class Company extends Equatable {
         email,
         //location,
         phoneNumber,
-        imageUrl,
+        logo,
         projectsNumber,
         //employeesNumber,
       ];

@@ -32,7 +32,7 @@ class CompanyProjectsListView extends StatelessWidget {
                     id: -10,
                     logo: "",
                     createdDate: DateTime(2027, 7, 7),
-                  ))
+                  ),)
               : _ProjectItem(
                   projectLogo: projects[index].logo,
                   project: projects[index],
@@ -73,6 +73,7 @@ class _ProjectItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
