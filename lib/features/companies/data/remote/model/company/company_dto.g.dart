@@ -1,0 +1,33 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'company_dto.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+CompanyDto _$CompanyDtoFromJson(Map<String, dynamic> json) => CompanyDto(
+      name: json['name'] as String,
+      id: (json['id'] as num).toInt(),
+     // description: json["description"] as String,
+     // location: json["location"] as String,
+      email: json["email"] as String,
+      phoneNumber: json["phone"] as String,
+      imageUrl: json['logo'] as String,
+      projectsNumber: (json['projects_count'] as num).toInt(),
+     // employeesNumber:
+      //(json['employeesNumber'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$CompanyDtoToJson(CompanyDto instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      //'description': instance.description,
+      'email': instance.email,
+      //'location': instance.location,
+      'phone': instance.phoneNumber,
+      //'employeesNumber': instance.employeesNumber,
+      'projects_count': instance.projectsNumber,
+      'logo': instance.imageUrl,
+    };

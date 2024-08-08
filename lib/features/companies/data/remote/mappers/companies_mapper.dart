@@ -1,18 +1,19 @@
 import '../../../../../core/data/remote/api_routes.dart';
 import '../../../domain/entities/company.dart';
-import '../model/company/child_dto.dart';
+import '../model/company/company_dto.dart';
 
 extension CompanyDtoX on CompanyDto {
   Company toCompany() => Company(
         name: name,
         id: id,
         projectsNumber: projectsNumber,
-        description: description,
+        //description: description,
         email: email,
         phoneNumber: phoneNumber,
-    employeesNumber: employeesNumber,
-        location: location,
-        imageUrl: "$ApiRoutes/$imageUrl",
+        //employeesNumber: employeesNumber,
+        //location: location,
+        imageUrl: imageUrl.isEmpty?"":
+            imageUrl.replaceAll("http://192.168.146.1:8000", ApiRoutes.devApi),
       );
 }
 

@@ -16,4 +16,5 @@ abstract class SyncColors {
   static const Color background = Color(0xFFbfccd1);
 
   static const Color green = Color(0xFF00FA9A);
+  static const Color pink = Color(0xFFededf9);
 }

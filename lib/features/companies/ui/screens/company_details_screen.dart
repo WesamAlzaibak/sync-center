@@ -7,7 +7,6 @@ import 'package:sync_center_mobile/core/utils/string.dart';
 import '../../../../core/ui/reusables/buttons/default_back_button.dart';
 import '../../../../core/ui/reusables/snackbars/default_snack_bar.dart';
 import '../../../../core/ui/theme/colors.dart';
-import '../../../../dummy_data.dart';
 import '../components/company_project_list_view.dart';
 import '../cubits/company_details/company_details_cubit.dart';
 import '../cubits/company_details/company_details_state.dart';
@@ -45,293 +44,310 @@ class CompanyDetailsScreen extends StatelessWidget {
               .refreshCompanyDetailsData(companyId),
           child: BlocBuilder<CompanyDetailsCubit, CompanyDetailsState>(
             builder: (context, state) {
-              //if (state is CompanyDetailsSuccessState) {
-              return SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 56, 16, 24),
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.only(top: 16),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Center(
-                                child: CircleAvatar(
-                                  radius: 52,
-                                  backgroundColor: SyncColors.darkBlue,
+              if (state is CompanyDetailsSuccessState) {
+                return SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 56, 16, 24),
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.only(top: 16),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Center(
                                   child: CircleAvatar(
-                                    radius: 50,
-                                    child: ClipOval(
-                                      child: SyncNetworkImage(
-                                        imageUrl: rLinkCompany.imageUrl,
-                                        width: 100.0,
-                                        height: 100.0,
-                                        fit: BoxFit.cover,
-                                      ),
+                                    radius: 52,
+                                    backgroundColor: SyncColors.darkBlue,
+                                    child: CircleAvatar(
+                                      radius: 50,
+                                      child: state.company.imageUrl == ""
+                                          ? Center(
+                                              child: Text(
+                                                state.company.name[0]
+                                                    .toUpperCase(),
+                                                style: const TextStyle(
+                                                  fontSize: 28,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: SyncColors.darkBlue,
+                                                ),
+                                              ),
+                                            )
+                                          : ClipOval(
+                                              child: SyncNetworkImage(
+                                                imageUrl: state.company.imageUrl
+                                                        .isEmpty
+                                                    ? ""
+                                                    : state.company.imageUrl,
+                                                width: 100.0,
+                                                height: 100.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Center(
-                                child: Column(
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Center(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        state.company.name,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 26,
+                                          color: SyncColors.black,
+                                        ),
+                                      ),
+                                      const Text(
+                                        "Damascus-Free Area",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: SyncColors.grey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                const Text(
+                                  "The R-Link team designs websites and applications focused on elevating the user experience and promoting growth.\nNo alternative text description for this image.",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: SyncColors.black,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
                                   children: [
-                                    Text(
-                                      rLinkCompany.name,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 26,
-                                        color: SyncColors.black,
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          color: Colors.white,
+                                        ),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(16.0),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .start, // Add this line
+                                                children: [
+                                                  Icon(
+                                                    Icons.people_alt_outlined,
+                                                    size: 25,
+                                                    color: SyncColors.darkBlue,
+                                                  ),
+                                                  SizedBox(width: 8),
+                                                  // Add some spacing between icon and text
+                                                  Expanded(
+                                                    child: Text(
+                                                      "Employees",
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: SyncColors.black,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(height: 8),
+                                              // Add some spacing between rows
+                                              Center(
+                                                child: Text(
+                                                  "25",
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w700,
+                                                    color: SyncColors.darkBlue,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                    Text(
-                                      rLinkCompany.location,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                        color: SyncColors.grey,
-                                      ),
+                                    const SizedBox(
+                                      width: 10,
                                     ),
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          color: Colors.white,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(16.0),
+                                          child: Column(
+                                            children: [
+                                              const Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .start, // Add this line
+                                                children: [
+                                                  Icon(
+                                                    Icons.folder_copy_outlined,
+                                                    size: 25,
+                                                    color: SyncColors.darkBlue,
+                                                  ),
+                                                  SizedBox(width: 8),
+                                                  Expanded(
+                                                    child: Text(
+                                                      "projects",
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: SyncColors.black,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 8),
+                                              Center(
+                                                child: Text(
+                                                  "${state.company.projectsNumber}",
+                                                  style: const TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w700,
+                                                    color: SyncColors.darkBlue,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    )
                                   ],
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                rLinkCompany.description,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: SyncColors.black,
+                                const SizedBox(
+                                  height: 10,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: Colors.white,
-                                      ),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(16.0),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .start, // Add this line
-                                              children: [
-                                                Icon(
-                                                  Icons.people_alt_outlined,
-                                                  size: 25,
-                                                  color: SyncColors.darkBlue,
-                                                ),
-                                                SizedBox(width: 8),
-                                                // Add some spacing between icon and text
-                                                Expanded(
-                                                  child: Text(
-                                                    "Employees",
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: SyncColors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 8),
-                                            // Add some spacing between rows
-                                            Center(
-                                              child: Text(
-                                                "25",
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: SyncColors.darkBlue,
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.0),
+                                  child: Divider(
+                                    thickness: 1,
+                                    color: Colors.grey,
                                   ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: Colors.white,
-                                      ),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(16.0),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .start, // Add this line
-                                              children: [
-                                                Icon(
-                                                  Icons.folder_copy_outlined,
-                                                  size: 25,
-                                                  color: SyncColors.darkBlue,
-                                                ),
-                                                SizedBox(width: 8),
-                                                // Add some spacing between icon and text
-                                                Expanded(
-                                                  child: Text(
-                                                    "projects",
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: SyncColors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 8),
-                                            // Add some spacing between rows
-                                            Center(
-                                              child: Text(
-                                                "14",
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: SyncColors.darkBlue,
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                                child: Divider(
-                                  thickness: 1,
-                                  color: Colors.grey,
                                 ),
-                              ),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.email_outlined,
-                                    size: 25,
-                                    color: SyncColors.darkBlue,
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    rLinkCompany.email,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.email_outlined,
+                                      size: 25,
                                       color: SyncColors.darkBlue,
                                     ),
-                                  )
-                                ],
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                                child: Divider(
-                                  thickness: 1,
-                                  color: Colors.grey,
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      state.company.email,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        color: SyncColors.darkBlue,
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              ),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.phone,
-                                    size: 25,
-                                    color: SyncColors.darkBlue,
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.0),
+                                  child: Divider(
+                                    thickness: 1,
+                                    color: Colors.grey,
                                   ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    rLinkCompany.phoneNumber.phoneFormat(),
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
+                                ),
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.phone,
+                                      size: 25,
                                       color: SyncColors.darkBlue,
                                     ),
-                                  )
-                                ],
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                                child: Divider(
-                                  thickness: 1,
-                                  color: Colors.grey,
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      state.company.phoneNumber.phoneFormat(),
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        color: SyncColors.darkBlue,
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              ),
-                              CompanyProjectsListView(
-                                isLoading: false,
-                                onProjectClick: (_) {},
-                                projects: projectList,
-                              ),
-                            ],
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 16.0),
+                                  child: Divider(
+                                    thickness: 1,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                CompanyProjectsListView(
+                                  isLoading: false,
+                                  projects: state.projects,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+                        DefaultBackButton(
+                          onPressed: () {
+                            context.pop();
+                          },
+                          iconColor: SyncColors.darkBlue,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              } else if (state is CompanyDetailsLoadingState) {
+                return Stack(
+                  children: [
+                    const Center(
+                      child: CircularProgressIndicator(
+                        color: SyncColors.darkBlue,
+                        strokeCap: StrokeCap.round,
                       ),
-                      DefaultBackButton(
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 56),
+                      child: DefaultBackButton(
                         onPressed: () {
                           context.pop();
                         },
-                        iconColor: SyncColors.darkBlue,
                       ),
-                    ],
-                  ),
-                ),
-              );
-              // } else if (state is CompanyDetailsLoadingState) {
-              //   return Stack(
-              //     children: [
-              //       const Center(
-              //         child: CircularProgressIndicator(
-              //           color: SyncColors.darkBlue,
-              //           strokeCap: StrokeCap.round,
-              //         ),
-              //       ),
-              //       Padding(
-              //         padding: const EdgeInsets.symmetric(
-              //             horizontal: 16.0, vertical: 56),
-              //         child: DefaultBackButton(
-              //           onPressed: () {
-              //             context.pop();
-              //           },
-              //         ),
-              //       ),
-              //     ],
-              //   );
-              // } else {
-              //   return const Placeholder();
-              // }
+                    ),
+                  ],
+                );
+              } else {
+                return const Placeholder();
+              }
             },
           ),
         ),
