@@ -102,7 +102,7 @@ final router = GoRouter(
         return BlocProvider<CompanyDetailsCubit>(
           create: (BuildContext context) {
             final companyDetailsCubit = getIt.get<CompanyDetailsCubit>()
-              ..fetchCompanyDetailsData(companyId);
+            ..fetchCompanyDetailsData(companyId);
             return companyDetailsCubit;
           },
           child: CompanyDetailsScreen(companyId: companyId),

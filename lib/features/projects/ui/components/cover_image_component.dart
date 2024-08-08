@@ -2,13 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/ui/reusables/buttons/default_back_button.dart';
 import '../../../../core/ui/reusables/images/sync_network_image.dart';
+import '../../../../core/ui/theme/colors.dart';
 
 class CoverImageComponent extends StatelessWidget {
-  const CoverImageComponent({super.key, required this.companyImageUrl, required this.logoImageUrl, required this.onBackPressed});
+  const CoverImageComponent(
+      {super.key,
+      required this.companyImageUrl,
+      required this.logoImageUrl,
+      required this.onBackPressed,
+      required this.companyName});
 
   final String companyImageUrl;
   final String logoImageUrl;
   final void Function() onBackPressed;
+  final String companyName;
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +24,28 @@ class CoverImageComponent extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          margin: const EdgeInsets.only(bottom: 77.5),
-          child: Container(
-            color: Colors.grey,
-            height: 240,
-            child: SyncNetworkImage(
-              imageUrl: companyImageUrl,
-              width: double.infinity,
+            margin: const EdgeInsets.only(bottom: 77.5),
+            child: Container(
+              color: SyncColors.pink,
               height: 240,
-              fit: BoxFit.cover,
-            ),
-          )
-        ),
+              child: companyImageUrl == ""
+                  ? Center(
+                      child: Text(
+                        "By ${companyName.toUpperCase()} Company",
+                        style: const TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          color: SyncColors.darkBlue,
+                        ),
+                      ),
+                    )
+                  : SyncNetworkImage(
+                      imageUrl: companyImageUrl,
+                      width: double.infinity,
+                      height: 240,
+                      fit: BoxFit.cover,
+                    ),
+            )),
         Positioned(
           top: 160,
           child: CircleAvatar(

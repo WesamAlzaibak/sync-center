@@ -9,11 +9,11 @@ import 'home_state.dart';
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {
-  final GetMyProjectsUseCase _getMyProjectsUseCase;
+  final GetUserProjectsUseCase _getMyProjectsUseCase;
   final UserLocalRepository _userLocalRepository;
 
   HomeCubit({
-    required GetMyProjectsUseCase getMyProjectsUseCase,
+    required GetUserProjectsUseCase getMyProjectsUseCase,
     required UserLocalRepository userLocalRepository,
   })  : _getMyProjectsUseCase = getMyProjectsUseCase,
   _userLocalRepository = userLocalRepository,

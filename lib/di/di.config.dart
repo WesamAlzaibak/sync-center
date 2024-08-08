@@ -70,7 +70,8 @@ import '../features/projects/domain/usecases/get_project_details_use_case.dart'
     as _i29;
 import '../features/projects/domain/usecases/get_projects_use_case.dart'
     as _i30;
-import '../features/projects/ui/cubits/project_details/project_details_cubit.dart' as _i32;
+import '../features/projects/ui/cubits/project_details/project_details_cubit.dart'
+    as _i32;
 import '../features/projects/ui/cubits/tasks/tasks_cubit.dart' as _i46;
 import '../features/tasks/data/remote/api/tasks_api.dart' as _i43;
 import '../features/tasks/data/remote/repositories/tasks_repository.dart'
@@ -145,15 +146,15 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i29.GetProjectDetailsUseCase>(() =>
         _i29.GetProjectDetailsUseCase(
             projectRemoteRepository: gh<_i28.ProjectRemoteRepository>()));
-    gh.factory<_i30.GetMyProjectsUseCase>(() => _i30.GetMyProjectsUseCase(
+    gh.factory<_i30.GetUserProjectsUseCase>(() => _i30.GetUserProjectsUseCase(
         projectRemoteRepository: gh<_i28.ProjectRemoteRepository>()));
     gh.factory<_i31.HomeCubit>(() => _i31.HomeCubit(
-          getMyProjectsUseCase: gh<_i30.GetMyProjectsUseCase>(),
+          getMyProjectsUseCase: gh<_i30.GetUserProjectsUseCase>(),
           userLocalRepository: gh<_i28.UserLocalRepository>(),
         ));
     gh.factory<_i32.ProjectDetailsCubit>(() => _i32.ProjectDetailsCubit(
-          getProjectDetailsUseCase: gh<_i29.GetProjectDetailsUseCase>(),
-        ));
+        getProjectDetailsUseCase: gh<_i29.GetProjectDetailsUseCase>(),
+        getCompanyUseCase: gh<_i35.GetCompanyUseCase>()));
     gh.factory<_i33.CompanyApi>(
         () => _i33.CompanyApi(remoteManager: gh<_i7.RemoteManager>()));
     gh.factory<_i34.CompanyRemoteRepository>(
@@ -162,6 +163,7 @@ extension GetItInjectableX on _i1.GetIt {
         companyRemoteRepository: gh<_i34.CompanyRemoteRepository>()));
     gh.factory<_i36.CompanyDetailsCubit>(() => _i36.CompanyDetailsCubit(
           getCompanyUseCase: gh<_i35.GetCompanyUseCase>(),
+          getUserProjectsUseCase: gh<_i30.GetUserProjectsUseCase>(),
         ));
     gh.factory<_i37.FirebaseApi>(
         () => _i37.FirebaseApi(remoteManager: gh<_i7.RemoteManager>()));
@@ -183,7 +185,6 @@ extension GetItInjectableX on _i1.GetIt {
         tasksRemoteRepository: gh<_i44.TasksRemoteRepository>()));
     gh.factory<_i46.ProjectTasksCubit>(() => _i46.ProjectTasksCubit(
         getProjectTasksUseCase: gh<_i45.GetProjectTasksUseCase>()));
-
     return this;
   }
 }

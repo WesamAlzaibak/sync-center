@@ -5,8 +5,8 @@ import '../../data/remote/repositories/projects_remote_repository.dart';
 import '../entities/user_projects.dart';
 
 @injectable
-class GetMyProjectsUseCase {
-  GetMyProjectsUseCase({
+class GetUserProjectsUseCase {
+  GetUserProjectsUseCase({
     required ProjectRemoteRepository projectRemoteRepository,
   }) : _projectRemoteRepository = projectRemoteRepository;
 

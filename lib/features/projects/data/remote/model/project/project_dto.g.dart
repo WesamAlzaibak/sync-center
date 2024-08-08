@@ -7,12 +7,14 @@ part of 'project_dto.dart';
 // **************************************************************************
 
 ProjectDto _$ProjectDtoFromJson(Map<String, dynamic> json) => ProjectDto(
-      title: json['title'] as String,
-      companyName: json['companyName'] as String,
+      name: json['name'] as String,
+      createdDate: json['created_at'] as String,
       id: (json['id'] as num).toInt(),
-      projectLogo: json['projectLogo'] as String? ??
-          'https://img.freepik.com/free-photo/view-child-hair-salon_23-2150462483.jpg',
-      companyPicture: json['companyPicture'] as String? ??
+      todoCount: (json['todo_count'] as num).toInt(),
+      inProgressCount: (json['doing_count'] as num).toInt(),
+      toReviewCount: (json['tocheck_count'] as num).toInt(),
+      doneCount: (json['done_count'] as num).toInt(),
+      logo: json['logo'] as String? ??
           'https://img.freepik.com/free-photo/view-child-hair-salon_23-2150462483.jpg',
       description: json['description'] as String,
     );
@@ -20,9 +22,12 @@ ProjectDto _$ProjectDtoFromJson(Map<String, dynamic> json) => ProjectDto(
 Map<String, dynamic> _$ProjectDtoToJson(ProjectDto instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'companyName': instance.companyName,
-      'companyPicture': instance.companyPicture,
+      'name': instance.name,
+      'created_at': instance.createdDate,
+      'logo': instance.logo,
+      'todo_count': instance.todoCount,
+      'doing_count': instance.inProgressCount,
+      'tocheck_count': instance.toReviewCount,
+      'done_count': instance.doneCount,
       'description': instance.description,
-      'projectLogo': instance.projectLogo,
     };

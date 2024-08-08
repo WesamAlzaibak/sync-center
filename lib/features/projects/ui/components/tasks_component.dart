@@ -101,12 +101,14 @@ class TasksItemsComponent extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                tasksTitle,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: taskColor,
+              Expanded(
+                child: Text(
+                  tasksTitle,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: taskColor,
+                  ),
                 ),
               ),
               const SizedBox(

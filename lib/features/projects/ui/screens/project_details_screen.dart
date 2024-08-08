@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sync_center_mobile/features/companies/ui/screens/company_details_screen.dart';
 import 'package:sync_center_mobile/features/projects/ui/screens/tasks_screen.dart';
 import '../../../../core/ui/reusables/buttons/default_back_button.dart';
 import '../../../../core/ui/reusables/snackbars/default_snack_bar.dart';
 import '../../../../core/ui/theme/colors.dart';
-import '../../../../dummy_data.dart';
 import '../components/files_folders_count_component.dart';
 import '../components/project_base_information_component.dart';
 import '../components/project_description_component.dart';
@@ -57,7 +57,12 @@ class ProjectDetailsScreen extends StatelessWidget {
                     children: [
                       ProjectBaseInformationComponent(
                         onBackClick: () => context.pop(),
-                        project: projectList[0],
+                        project: state.project,
+                        companyLogo: state.company.imageUrl,
+                        companyName: state.company.name,
+                        onCompanyNamePressed: () => context.push(
+                            CompanyDetailsScreen.route,
+                            extra: {"companyId": 1}),
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(16, 0, 16, 40),
@@ -65,8 +70,10 @@ class ProjectDetailsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TasksComponent(
-                              toDo: 85,     doing: 24,
-                              done: 33,     reviewing: 13,
+                              toDo: state.project.todoCount,
+                              doing: state.project.inProgressCount,
+                              done: state.project.toReviewCount,
+                              reviewing: state.project.doneCount,
                               onClick: () => context.push(TasksScreen.route),
                             ),
                             const SizedBox(
@@ -79,7 +86,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                               height: 20,
                             ),
                             ProjectDescriptionComponent(
-                              description: projectList[0].description,
+                              description: state.project.description,
                             ),
                           ],
                         ),

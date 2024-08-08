@@ -4,12 +4,16 @@ import '../model/project/project_dto.dart';
 
 extension ProjectDtoX on ProjectDto {
   Project toProject() => Project(
-        title: title,
+        name: name,
         id: id,
-        companyName: companyName,
-        companyPicture: companyPicture,
+        todoCount: todoCount,
+        inProgressCount: inProgressCount,
+        toReviewCount: toReviewCount,
+        doneCount: doneCount,
+        createdDate: DateTime.parse(createdDate),
+        logo: logo.replaceAll(
+            "http://192.168.146.1:8000", ApiRoutes.devApi),
         description: description,
-        projectLogo: "$ApiRoutes/$projectLogo",
       );
 }
 

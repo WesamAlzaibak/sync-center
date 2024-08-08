@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../../companies/domain/entities/company.dart';
 import '../../../domain/entities/project.dart';
-
 
 class ProjectDetailsState extends Equatable {
   const ProjectDetailsState();
@@ -48,18 +48,26 @@ class ProjectDetailsLoadingState extends ProjectDetailsState {
 
 class ProjectDetailsSuccessState extends ProjectDetailsState {
   final Project project;
+  final Company company;
 
   const ProjectDetailsSuccessState({
     required this.project,
+    required this.company,
   });
 
   @override
   ProjectDetailsSuccessState copy({
     Project? project,
+    Company? company,
   }) =>
       ProjectDetailsSuccessState(
-          project: project ?? this.project);
+        project: project ?? this.project,
+        company: company ?? this.company,
+      );
 
   @override
-  List<Object> get props => [project];
+  List<Object> get props => [
+        project,
+        company,
+      ];
 }

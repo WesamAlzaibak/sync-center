@@ -31,6 +31,7 @@ class MyProjectsListView extends StatelessWidget {
                   title: "Moushref Project For WEsam",
                   projectLogo: 'https://en.chessbase.com/thumb/91753',
                   date: DateTime(2026, 4, 5),
+                  isLoading: true,
                 )
               : _ProjectItem(
                   onClick: () {
@@ -39,6 +40,7 @@ class MyProjectsListView extends StatelessWidget {
                   title: projects[index].name,
                   projectLogo: projects[index].logo,
                   date: projects[index].createdDate,
+                  isLoading: false,
                 );
         },
         padding: const EdgeInsets.all(0),
@@ -48,7 +50,7 @@ class MyProjectsListView extends StatelessWidget {
         separatorBuilder: (BuildContext context, int index) {
           return const SizedBox(height: 12);
         },
-        itemCount: isLoading?3:projects.length,
+        itemCount: isLoading ? 3 : projects.length,
       ),
     );
   }
@@ -60,12 +62,14 @@ class _ProjectItem extends StatelessWidget {
     required this.projectLogo,
     required this.onClick,
     required this.date,
+    required this.isLoading,
   });
 
   final String title;
   final String projectLogo;
   final DateTime date;
   final void Function() onClick;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -77,16 +81,18 @@ class _ProjectItem extends StatelessWidget {
         onTap: onClick,
         child: Container(
           decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                    blurStyle: BlurStyle.outer,
-                    blurRadius: 16,
-                    spreadRadius: 0,
-                    offset: const Offset(0, 4),
-                    color: SyncColors.black.withOpacity(0.12))
-              ]),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                blurStyle: BlurStyle.outer,
+                blurRadius: 16,
+                spreadRadius: 0,
+                offset: const Offset(0, 4),
+                color: SyncColors.black.withOpacity(0.12),
+              ),
+            ],
+          ),
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 16.0,
@@ -99,20 +105,22 @@ class _ProjectItem extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 50,
-                      backgroundColor: SyncColors.lightBlue,
-                      child: projectLogo==''?Text(
-                        title[0].toUpperCase(),
-                      style: const TextStyle(
-                        color: SyncColors.darkBlue,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 25,
-                      ),
-                      ):SyncNetworkImage(
-                        imageUrl: projectLogo,
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.fill,
-                      ),
+                      backgroundColor: isLoading ? SyncColors.lightBlue : null,
+                      child: projectLogo == ''
+                          ? Text(
+                              title[0].toUpperCase(),
+                              style: const TextStyle(
+                                color: SyncColors.darkBlue,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 25,
+                              ),
+                            )
+                          : SyncNetworkImage(
+                              imageUrl: projectLogo,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.fill,
+                            ),
                     ),
                     const SizedBox(width: 20),
                     Expanded(
