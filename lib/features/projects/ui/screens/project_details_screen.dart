@@ -36,7 +36,7 @@ class ProjectDetailsScreen extends StatelessWidget {
       listener: (BuildContext context, state) {
         if (state is ProjectDetailsErrorState) {
           ScaffoldMessenger.of(context)
-              .showSnackBar(DefaultSnackBar(text: state.exception.toString()));
+              .showSnackBar(DefaultSnackBar(text: " ${state.exception.toString()} "));
         }
       },
       child: Scaffold(
