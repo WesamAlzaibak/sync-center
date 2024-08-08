@@ -82,8 +82,11 @@ class ProjectDetailsScreen extends StatelessWidget {
                             ),
                             FoldersFilesCountComponent(
                               files: 16,
-                              onClick: () =>
-                                  context.push(ProjectFilesScreen.route,extra: {"projectId":projectId,"projectName":state.project.name}),
+                              onClick: () => context
+                                  .push(ProjectFilesScreen.route, extra: {
+                                "projectId": projectId,
+                                "projectName": state.project.name
+                              }),
                             ),
                             const SizedBox(
                               height: 20,

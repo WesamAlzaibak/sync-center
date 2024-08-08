@@ -11,8 +11,7 @@ import '../models/upload_project_file/upload_project_file_dto.dart';
 class FileRemoteRepository {
   final FileApi _fileApi;
 
-  FileRemoteRepository({required FileApi fileApi})
-      : _fileApi = fileApi;
+  FileRemoteRepository({required FileApi fileApi}) : _fileApi = fileApi;
 
   Future<Result<List<ProjectFile>>> getProjectFiles(int projectId) async {
     return await asyncRunCatching<List<ProjectFile>>(() async {
@@ -22,15 +21,14 @@ class FileRemoteRepository {
     });
   }
 
-
   Future<Result<void>> uploadProjectFile({
     required UploadProjectFileDto uploadProjectFileDto,
     required int projectId,
   }) async {
     final formData = FormData.fromMap(uploadProjectFileDto.toJson());
     return await asyncRunCatching<void>(() async {
-      return await _fileApi.uploadProjectFile(formData:formData,projectId: projectId);
+      return await _fileApi.uploadProjectFile(
+          formData: formData, projectId: projectId);
     });
   }
-
 }

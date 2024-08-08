@@ -12,7 +12,8 @@ class UploadProjectFileUseCase {
 
   final FileRemoteRepository _fileRemoteRepository;
 
-  Future<Result<void>> call(UploadProjectFileDto uploadProjectFileDto, int projectId) async {
+  Future<Result<void>> call(
+      UploadProjectFileDto uploadProjectFileDto, int projectId) async {
     final result = await _fileRemoteRepository.uploadProjectFile(
         uploadProjectFileDto: uploadProjectFileDto, projectId: projectId);
     return result;

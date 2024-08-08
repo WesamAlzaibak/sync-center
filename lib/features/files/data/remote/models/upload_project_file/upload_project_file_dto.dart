@@ -16,7 +16,8 @@ class UploadProjectFileDto {
     'file': files,
   };
 
-  static Future<UploadProjectFileDto> fromFilePickerResult(FilePickerResult result) async {
+  static Future<UploadProjectFileDto> fromFilePickerResult(
+      FilePickerResult result) async {
     List<MultipartFile> files = [];
     for (var file in result.files) {
       files.add(await MultipartFile.fromFile(file.path!, filename: file.name));

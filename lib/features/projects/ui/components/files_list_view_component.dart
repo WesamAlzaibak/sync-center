@@ -108,27 +108,28 @@ class FilesItems extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  (fileImageUrl==null)?Center(
-                    child: Image.asset(
-                      "assets/images/loading_image.jpg",
-                      height: 180,
-                      fit: BoxFit.fill,
-                    ),
-                  ):
-                  FileTypeUtils.isImageFile(fileImageUrl!)
+                  (fileImageUrl == null)
                       ? Center(
-                          child: SyncNetworkImageWithoutWidth(
-                              imageUrl: fileImageUrl!,
-                              height: 180,
-                              fit: BoxFit.fill),
-                        )
-                      : Center(
                           child: Image.asset(
-                            FileTypeUtils.fileType(fileImageUrl!),
+                            "assets/images/loading_image.jpg",
                             height: 180,
                             fit: BoxFit.fill,
                           ),
-                        ),
+                        )
+                      : FileTypeUtils.isImageFile(fileImageUrl!)
+                          ? Center(
+                              child: SyncNetworkImageWithoutWidth(
+                                  imageUrl: fileImageUrl!,
+                                  height: 180,
+                                  fit: BoxFit.fill),
+                            )
+                          : Center(
+                              child: Image.asset(
+                                FileTypeUtils.fileType(fileImageUrl!),
+                                height: 180,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -139,32 +140,34 @@ class FilesItems extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 30,
-                          child: userImageUrl==null?ClipOval(
-                            child: Image.asset(
-                              "assets/images/loading_image.jpg",
-                              height: 60,
-                              width: 60,
-                              fit: BoxFit.fill,
-                            ),
-                          ):userImageUrl!.isEmpty
-                              ? Center(
-                                  child: Text(
-                                    "Wesam"[0].toUpperCase(),
-                                    style: const TextStyle(
-                                      fontSize: 28,
-                                      fontWeight: FontWeight.w700,
-                                      color: SyncColors.darkBlue,
-                                    ),
-                                  ),
-                                )
-                              : ClipOval(
-                                  child: SyncNetworkImage(
-                                    imageUrl: userImageUrl!,
+                          child: userImageUrl == null
+                              ? ClipOval(
+                                  child: Image.asset(
+                                    "assets/images/loading_image.jpg",
                                     height: 60,
                                     width: 60,
                                     fit: BoxFit.fill,
                                   ),
-                                ),
+                                )
+                              : userImageUrl!.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        "Wesam"[0].toUpperCase(),
+                                        style: const TextStyle(
+                                          fontSize: 28,
+                                          fontWeight: FontWeight.w700,
+                                          color: SyncColors.darkBlue,
+                                        ),
+                                      ),
+                                    )
+                                  : ClipOval(
+                                      child: SyncNetworkImage(
+                                        imageUrl: userImageUrl!,
+                                        height: 60,
+                                        width: 60,
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
                         ),
                         const SizedBox(
                           width: 20,

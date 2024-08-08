@@ -80,6 +80,35 @@ class ProjectFilesScreen extends StatelessWidget {
             }
           },
         ),
+        BlocListener<ProjectFilesCubit, ProjectFilesState>(
+          listenWhen: (previousState, state) {
+            return previousState is! UploadProjectFileLoadingState &&
+                state is UploadProjectFileLoadingState ;
+          },
+          listener: (context, state) {
+            showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: SyncColors.darkBlue,
+                    strokeCap: StrokeCap.round,
+                  ),
+                );
+              },
+            );
+          },
+        ),
+        BlocListener<ProjectFilesCubit, ProjectFilesState>(
+          listenWhen: (previousState, state) {
+            return previousState is UploadProjectFileLoadingState &&
+                state is ProjectFilesSuccessState ;
+          },
+          listener: (context, state) {
+            context.pop();
+          },
+        )
       ],
       child: BlocBuilder<ProjectFilesCubit, ProjectFilesState>(
         builder: (context, state) {
@@ -110,7 +139,9 @@ class ProjectFilesScreen extends StatelessWidget {
               edgeOffset: 0,
               key: _refreshIndicatorKey,
               color: SyncColors.darkBlue,
-              onRefresh: () =>context.read<ProjectFilesCubit>().fetchProjectFilesData(projectId),
+              onRefresh: () => context
+                  .read<ProjectFilesCubit>()
+                  .fetchProjectFilesData(projectId),
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -151,7 +182,9 @@ class ProjectFilesScreen extends StatelessWidget {
               onPressed: () async {
                 final result = await openFile(); // User picks files
                 if (result != null) {
-                  await context.read<ProjectFilesCubit>().uploadProjectFile(result, projectId);
+                  await context
+                      .read<ProjectFilesCubit>()
+                      .uploadProjectFile(result, projectId);
                 }
               },
               child: Skeletonizer(
