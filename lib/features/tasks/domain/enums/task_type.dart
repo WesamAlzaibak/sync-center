@@ -3,11 +3,11 @@ import 'package:json_annotation/json_annotation.dart';
 enum TaskType {
   @JsonValue("ALL")
   all,
-  @JsonValue("TODO")
+  @JsonValue("To Do")
   toDo,
-  @JsonValue("ToProgress")
+  @JsonValue("Doing")
   inProgress,
-  @JsonValue("ToReview")
+  @JsonValue("To Check")
   toReview,
   @JsonValue("Done")
   done,
@@ -19,11 +19,11 @@ extension TaskTypeX on TaskType {
       case TaskType.all:
         return "ALL";
       case TaskType.toDo:
-        return "TODO";
+        return "To Do";
       case TaskType.inProgress:
-        return "ToProgress";
+        return "Doing";
       case TaskType.toReview:
-        return "ToReview";
+        return "To Check";
       case TaskType.done:
         return "Done";
     }

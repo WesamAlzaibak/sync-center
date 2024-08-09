@@ -75,7 +75,11 @@ class ProjectDetailsScreen extends StatelessWidget {
                               doing: state.project.inProgressCount,
                               done: state.project.toReviewCount,
                               reviewing: state.project.doneCount,
-                              onClick: () => context.push(TasksScreen.route),
+                              onClick: () => context.push(TasksScreen.route,
+                                  extra: {
+                                    "projectId": projectId,
+                                    "projectName": state.project.name
+                                  }),
                             ),
                             const SizedBox(
                               height: 10,

@@ -20,8 +20,7 @@ class ProjectTasksCubit extends Cubit<ProjectTasksState> {
           ),
         );
 
-  Future<void> fetchProjectTasks(
-      {required int projectId}) async {
+  Future<void> fetchProjectTasks({required int projectId}) async {
     emit(
       ProjectTasksLoadingState(
         currentType: state.currentType,
@@ -32,18 +31,19 @@ class ProjectTasksCubit extends Cubit<ProjectTasksState> {
     );
   }
 
-  Future<void> refreshProjectTasks(
-      {required int projectId}) async {
+  Future<void> refreshProjectTasks({required int projectId}) async {
     final results = await Future.wait([
       _getProjectTasksUseCase.call(projectId: projectId),
     ]);
     Result.evaluate(results).fold(
-      (error) => emit(ProjectTasksErrorState(
-        exception: error,
-        currentType: state.currentType,
-      )),
+      (error) => emit(
+        ProjectTasksErrorState(
+          exception: error,
+          currentType: state.currentType,
+        ),
+      ),
       (data) {
-        final tasks = data as List<Task>;
+        final tasks = data[0] as List<Task>;
         emit(
           ProjectTasksSuccessState(
             tasks: tasks,

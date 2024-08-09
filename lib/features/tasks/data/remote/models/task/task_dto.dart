@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:sync_center_mobile/features/tasks/domain/enums/task_type.dart';
 
+import '../empolyee/employee_dto.dart';
+
 part 'task_dto.g.dart';
 
 @JsonSerializable()
@@ -9,22 +11,28 @@ class TaskDto {
   final int id;
   @JsonKey(name: "title")
   final String title;
-  @JsonKey(name: "type")
-  final TaskType type;
+  @JsonKey(name: "status_translation")
+  final String type;
   @JsonKey(name: "description")
   final String description;
-  @JsonKey(name: "employeeName")
-  final String employeeName;
-  @JsonKey(name: "taskDate")
-  final String date;
+  @JsonKey(name: "employees")
+  final List<EmployeeDto> employees;
+  @JsonKey(name: "total_duration")
+  final String totalDuration;
+  @JsonKey(name: "start_date")
+  final String startDate;
+  @JsonKey(name: "end_date")
+  final String endDate;
 
   TaskDto({
     required this.title,
     required this.type,
     required this.description,
     required this.id,
-    required this.employeeName,
-    required this.date,
+    required this.employees,
+    required this.totalDuration,
+    required this.startDate,
+    required this.endDate,
   });
 
   factory TaskDto.fromJson(Map<String, dynamic> json) =>

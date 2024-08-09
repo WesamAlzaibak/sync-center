@@ -1,9 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:sync_center_mobile/features/tasks/data/remote/models/task/task_dto.dart';
-import 'package:sync_center_mobile/features/tasks/data/remote/models/tasks_request/tasks_request_dto.dart';
 
 import '../../../../../core/data/models/normal_response.dart';
-import '../../../../../core/data/models/pagination_response.dart';
 import '../../../../../core/data/remote/remote_manager.dart';
 
 @injectable
@@ -14,15 +12,18 @@ class TasksApi {
       : _remoteManager = remoteManager;
 
   Future<List<TaskDto>> getProjectTasks({
-    required TasksRequestDto tasksRequestDto,
+    required int projectId,
   }) async {
     final response = await _remoteManager.request<Map<String, dynamic>>(
-        RequestMethod.get, "/project/tasks",
-        body: tasksRequestDto);
+        RequestMethod.get,
+        "/user/tasks/$projectId",
+        );
     final normalResponse = NormalResponse.fromJson(
-        response.data ?? {},
-        (data) => PaginationResponse.fromJson(data as Map<String, dynamic>,
-            (data) => TaskDto.fromJson(data as Map<String, dynamic>)));
-    return normalResponse.data.items;
+      response.data ?? {},
+          (data) => (data as List<dynamic>)
+          .map((item) => TaskDto.fromJson(item as Map<String, dynamic>))
+          .toList(),
+    );
+    return normalResponse.data;
   }
 }

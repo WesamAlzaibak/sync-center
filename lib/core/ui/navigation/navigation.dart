@@ -24,132 +24,127 @@ import '../../../features/projects/ui/cubits/project_files/project_files_cubit.d
 import '../../../features/projects/ui/screens/project_files_screen.dart';
 import '../../../features/projects/ui/screens/tasks_screen.dart';
 
-
-final router = GoRouter(
-  initialLocation: LoginScreen.route,
-  routes:  [
-    GoRoute(
-      path: LoginScreen.route,
-      builder: (context, state) => BlocProvider<LoginCubit>(
-        create: (BuildContext context) => getIt.get<LoginCubit>(),
-        child: const LoginScreen(),
-      ),
+final router = GoRouter(initialLocation: LoginScreen.route, routes: [
+  GoRoute(
+    path: LoginScreen.route,
+    builder: (context, state) => BlocProvider<LoginCubit>(
+      create: (BuildContext context) => getIt.get<LoginCubit>(),
+      child: const LoginScreen(),
     ),
-    GoRoute(
-      path: ResetPasswordVerificationScreen.route,
-      builder: (context, state) {
-        final extra = state.extra as Map<String, dynamic>?;
-        return BlocProvider<ResetPasswordVerificationCubit>(
-          create: (BuildContext context) =>
-              getIt.get<ResetPasswordVerificationCubit>(),
-          child: ResetPasswordVerificationScreen(
-            email: extra?["email"] ?? "",
-          ),
-        );
-      },
-    ),
-    GoRoute(
-      path: ResetPasswordScreen.route,
-      builder: (context, state) {
-        final extra = state.extra as Map<String, dynamic>?;
-        return BlocProvider<ResetPasswordCubit>(
-          create: (BuildContext context) => getIt.get<ResetPasswordCubit>(),
-          child: ResetPasswordScreen(
-            email: extra?["email"] ?? "",
-            code: extra?["code"] ?? "",
-          ),
-        );
-      },
-    ),
-    GoRoute(
-      path: ForgetPasswordScreen.route,
-      builder: (context, state) => BlocProvider(
-          create: (BuildContext context) => getIt.get<ForgetPasswordCubit>(),
-          child: const ForgetPasswordScreen()),
-    ),
-    GoRoute(
-      path: ProjectDetailsScreen.route,
-      builder: (context, state) {
-        final extra = state.extra as Map<String, dynamic>?;
-        final projectId = extra?["projectId"] ?? 0;
-        return BlocProvider<ProjectDetailsCubit>(
-          create: (BuildContext context) {
-            final projectDetailsCubit = getIt.get<ProjectDetailsCubit>()
-              ..fetchProjectDetails(projectId: projectId);
-            return projectDetailsCubit;
-          },
-          child: ProjectDetailsScreen(projectId: projectId),
-        );
-      },
-    ),
-    GoRoute(
-      path: HomeScreen.route,
-      builder: (context, state) {
-        return BlocProvider<HomeCubit>(
-          create: (BuildContext context) {
-            final homeCubit = getIt.get<HomeCubit>()
-              ..init();
-            return homeCubit;
-          },
-          child: HomeScreen(),
-        );
-      },
-    ),
-    GoRoute(
-      path: CompanyDetailsScreen.route,
-      builder: (context, state) {
-        final extra = state.extra as Map<String, dynamic>?;
-        final companyId = extra?["companyId"] ?? 0;
-        return BlocProvider<CompanyDetailsCubit>(
-          create: (BuildContext context) {
-            final companyDetailsCubit = getIt.get<CompanyDetailsCubit>()
+  ),
+  GoRoute(
+    path: ResetPasswordVerificationScreen.route,
+    builder: (context, state) {
+      final extra = state.extra as Map<String, dynamic>?;
+      return BlocProvider<ResetPasswordVerificationCubit>(
+        create: (BuildContext context) =>
+            getIt.get<ResetPasswordVerificationCubit>(),
+        child: ResetPasswordVerificationScreen(
+          email: extra?["email"] ?? "",
+        ),
+      );
+    },
+  ),
+  GoRoute(
+    path: ResetPasswordScreen.route,
+    builder: (context, state) {
+      final extra = state.extra as Map<String, dynamic>?;
+      return BlocProvider<ResetPasswordCubit>(
+        create: (BuildContext context) => getIt.get<ResetPasswordCubit>(),
+        child: ResetPasswordScreen(
+          email: extra?["email"] ?? "",
+          code: extra?["code"] ?? "",
+        ),
+      );
+    },
+  ),
+  GoRoute(
+    path: ForgetPasswordScreen.route,
+    builder: (context, state) => BlocProvider(
+        create: (BuildContext context) => getIt.get<ForgetPasswordCubit>(),
+        child: const ForgetPasswordScreen()),
+  ),
+  GoRoute(
+    path: ProjectDetailsScreen.route,
+    builder: (context, state) {
+      final extra = state.extra as Map<String, dynamic>?;
+      final projectId = extra?["projectId"] ?? 0;
+      return BlocProvider<ProjectDetailsCubit>(
+        create: (BuildContext context) {
+          final projectDetailsCubit = getIt.get<ProjectDetailsCubit>()
+            ..fetchProjectDetails(projectId: projectId);
+          return projectDetailsCubit;
+        },
+        child: ProjectDetailsScreen(projectId: projectId),
+      );
+    },
+  ),
+  GoRoute(
+    path: HomeScreen.route,
+    builder: (context, state) {
+      return BlocProvider<HomeCubit>(
+        create: (BuildContext context) {
+          final homeCubit = getIt.get<HomeCubit>()..init();
+          return homeCubit;
+        },
+        child: HomeScreen(),
+      );
+    },
+  ),
+  GoRoute(
+    path: CompanyDetailsScreen.route,
+    builder: (context, state) {
+      final extra = state.extra as Map<String, dynamic>?;
+      final companyId = extra?["companyId"] ?? 0;
+      return BlocProvider<CompanyDetailsCubit>(
+        create: (BuildContext context) {
+          final companyDetailsCubit = getIt.get<CompanyDetailsCubit>()
             ..fetchCompanyDetailsData(companyId);
-            return companyDetailsCubit;
-          },
-          child: CompanyDetailsScreen(companyId: companyId),
-        );
-      },
-    ),
-    GoRoute(
-      path: NotificationsScreen.route,
-      builder: (context, state) {
-        return BlocProvider<NotificationsCubit>(
-          create: (BuildContext context) => getIt.get<NotificationsCubit>(),
-          child: const NotificationsScreen(),
-        );
-      },
-    ),
-    GoRoute(
-      path: TasksScreen.route,
-      builder: (context, state) {
-        final extra = state.extra as Map<String, dynamic>?;
-        return
-          BlocProvider<ProjectTasksCubit>(
-          create: (BuildContext context) => getIt.get<ProjectTasksCubit>(),
-          child:
-          TasksScreen(
-            projectName: extra?["projectName"] ?? "Moushref",
-            projectId: extra?["projectId"] ?? -1,
-          ),
-        );
-      },
-    ),
-    GoRoute(
-      path: ProjectFilesScreen.route,
-      builder: (context, state) {
-        final extra = state.extra as Map<String, dynamic>?;
-        final projectId = extra?["projectId"] ?? -1;
-        final projectName = extra?["projectName"] ?? "Moushref";
-        return
-          BlocProvider<ProjectFilesCubit>(
-            create: (BuildContext context) => getIt.get<ProjectFilesCubit>()..fetchProjectFilesData(projectId),
-            child:
-            ProjectFilesScreen(
-              projectName: projectName,
-              projectId: projectId,
-            ),
-          );
-      },
-    ),
-  ]
-);
+          return companyDetailsCubit;
+        },
+        child: CompanyDetailsScreen(companyId: companyId),
+      );
+    },
+  ),
+  GoRoute(
+    path: NotificationsScreen.route,
+    builder: (context, state) {
+      return BlocProvider<NotificationsCubit>(
+        create: (BuildContext context) => getIt.get<NotificationsCubit>(),
+        child: const NotificationsScreen(),
+      );
+    },
+  ),
+  GoRoute(
+    path: TasksScreen.route,
+    builder: (context, state) {
+      final extra = state.extra as Map<String, dynamic>?;
+      final projectId = extra?["projectId"] ?? -1;
+      final projectName = extra?["projectName"] ?? "Moushref";
+      return BlocProvider<ProjectTasksCubit>(
+        create: (BuildContext context) => getIt.get<ProjectTasksCubit>()
+          ..fetchProjectTasks(projectId: projectId),
+        child: TasksScreen(
+          projectName: projectName,
+          projectId: projectId,
+        ),
+      );
+    },
+  ),
+  GoRoute(
+    path: ProjectFilesScreen.route,
+    builder: (context, state) {
+      final extra = state.extra as Map<String, dynamic>?;
+      final projectId = extra?["projectId"] ?? -1;
+      final projectName = extra?["projectName"] ?? "Moushref";
+      return BlocProvider<ProjectFilesCubit>(
+        create: (BuildContext context) =>
+            getIt.get<ProjectFilesCubit>()..fetchProjectFilesData(projectId),
+        child: ProjectFilesScreen(
+          projectName: projectName,
+          projectId: projectId,
+        ),
+      );
+    },
+  ),
+]);
