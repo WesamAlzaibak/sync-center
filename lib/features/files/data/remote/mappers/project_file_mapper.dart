@@ -6,9 +6,9 @@ extension ProjectFileDtoX on ProjectFileDto {
   ProjectFile toProjectFile() => ProjectFile(
         url: url.replaceAll("http://192.168.146.1:8000", ApiRoutes.devApi),
         id: id,
-        // userName: userName,
-        // userPicture: userPicture,
-        // date: DateTime.parse(date),
+        userName: userName,
+        userPicture: userPicture,
+        date: DateTime.parse(date),
       );
 }
 

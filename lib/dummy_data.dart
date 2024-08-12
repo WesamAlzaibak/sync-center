@@ -1,10 +1,6 @@
-import 'package:sync_center_mobile/features/companies/domain/entities/company.dart';
 
-import 'features/files/domain/entities/project_file.dart';
 import 'features/projects/domain/entities/project.dart';
 import 'features/projects/domain/entities/user_projects.dart';
-import 'features/tasks/domain/entities/task.dart';
-import 'features/tasks/domain/enums/task_type.dart';
 
 List<UserProjects> userProjectList = [
   UserProjects(
@@ -72,20 +68,20 @@ List<Project> projectList = [
   ),
 ];
 
-Company rLinkCompany = const Company(
-  name: "R-link Company",
-  id: 1,
-  // description:
-  //     "The R-Link team designs websites and applications focused on elevating the user experience and promoting growth.\nNo alternative text description for this image.",
-  //
-  logo:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRkaJyTKoMqTVDv0kBA6HXUtx576cyuhaPcA&s",
-  //location: "Damascus-Free Area",
-  projectsNumber: 14,
-  //employeesNumber: 25,
-  phoneNumber: "+963995967227",
-  email: "R-Link_company@gmail.com",
-);
+// Company rLinkCompany = const Company(
+//   name: "R-link Company",
+//   id: 1,
+//   // description:
+//   //     "The R-Link team designs websites and applications focused on elevating the user experience and promoting growth.\nNo alternative text description for this image.",
+//   //
+//   logo:
+//       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRkaJyTKoMqTVDv0kBA6HXUtx576cyuhaPcA&s",
+//   //location: "Damascus-Free Area",
+//   projectsNumber: 14,
+//   //employeesNumber: 25,
+//   phoneNumber: "+963995967227",
+//   email: "R-Link_company@gmail.com",
+// );
 
 // List<Task> tasks = [
 //   Task(
@@ -186,35 +182,35 @@ Company rLinkCompany = const Company(
 //     finishDate: DateTime(2024, 5, 23),
 //   ),
 // ];
-
-List<ProjectFile> projectFilesList = [
-  // ProjectFile(
-  //   url:
-  //       "http://192.168.1.8:8000/storage/5/[EgyBest].Avengers.Endgame.2019.BluRay.1080p.x264.mp4_snapshot_00.52.58.585.jpg",
-  //   id: 1,
-  //   // userName: "R-Link",
-  //   // userPicture: "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
-  //   // date: DateTime(2024, 6, 7),
-  // ),
-  // ProjectFile(
-  //   url: "http://192.168.1.8:8000/storage/2/منصة-التأشيرات.pdf",
-  //   id: 1,
-  //   userName: "R-Link",
-  //   userPicture: "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
-  //   date: DateTime(2024, 3, 23),
-  // ),
-  // ProjectFile(
-  //   url: "http://192.168.1.8:8000/storage/3/text_for_testing.txt",
-  //   userName: "R-Link",
-  //   userPicture: "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
-  //   id: 1,
-  //   date: DateTime(2023, 8, 20),
-  // ),
-  // ProjectFile(
-  //   url: "http://192.168.1.8:8000/storage/4/الفرونت-النقاقين.docx",
-  //   userName: "R-Link",
-  //   userPicture: "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
-  //   id: 1,
-  //   date: DateTime(2023, 6, 9),
-  // ),
-];
+//
+// List<ProjectFile> projectFilesList = [
+//   // ProjectFile(
+//   //   url:
+//   //       "http://192.168.1.8:8000/storage/5/[EgyBest].Avengers.Endgame.2019.BluRay.1080p.x264.mp4_snapshot_00.52.58.585.jpg",
+//   //   id: 1,
+//   //   // userName: "R-Link",
+//   //   // userPicture: "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
+//   //   // date: DateTime(2024, 6, 7),
+//   // ),
+//   // ProjectFile(
+//   //   url: "http://192.168.1.8:8000/storage/2/منصة-التأشيرات.pdf",
+//   //   id: 1,
+//   //   userName: "R-Link",
+//   //   userPicture: "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
+//   //   date: DateTime(2024, 3, 23),
+//   // ),
+//   // ProjectFile(
+//   //   url: "http://192.168.1.8:8000/storage/3/text_for_testing.txt",
+//   //   userName: "R-Link",
+//   //   userPicture: "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
+//   //   id: 1,
+//   //   date: DateTime(2023, 8, 20),
+//   // ),
+//   // ProjectFile(
+//   //   url: "http://192.168.1.8:8000/storage/4/الفرونت-النقاقين.docx",
+//   //   userName: "R-Link",
+//   //   userPicture: "http://192.168.1.8:8000/storage/1/08ian-nepomniachtchi.jpg",
+//   //   id: 1,
+//   //   date: DateTime(2023, 6, 9),
+//   // ),
+// ];

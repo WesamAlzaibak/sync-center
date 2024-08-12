@@ -62,6 +62,7 @@ dependencies:
   file_picker: ^8.0.7
   mime: ^1.0.5
   http_parser: ^4.0.2
+  syncfusion_flutter_calendar: ^26.2.8
 
 dev_dependencies:
   flutter_test:

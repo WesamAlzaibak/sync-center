@@ -15,8 +15,8 @@ CompanyDto _$CompanyDtoFromJson(Map<String, dynamic> json) => CompanyDto(
       phoneNumber: json["phone"] as String,
       logo: json['logo'] as String,
       projectsNumber: (json['projects_count'] as num).toInt(),
-      // employeesNumber:
-      //(json['employeesNumber'] as num).toInt(),
+      employeesNumber:
+      (json['employees_count'] as num).toInt(),
     );
 
 Map<String, dynamic> _$CompanyDtoToJson(CompanyDto instance) =>
@@ -27,7 +27,7 @@ Map<String, dynamic> _$CompanyDtoToJson(CompanyDto instance) =>
       'email': instance.email,
       //'location': instance.location,
       'phone': instance.phoneNumber,
-      //'employeesNumber': instance.employeesNumber,
+      'employees_count': instance.employeesNumber,
       'projects_count': instance.projectsNumber,
       'logo': instance.logo,
     };

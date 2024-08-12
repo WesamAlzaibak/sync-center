@@ -24,12 +24,12 @@ class FilesListViewComponent extends StatelessWidget {
     return ListView.separated(
       itemBuilder: (context, index) => isLoading
           ? FilesItems(
-              projectFile: const ProjectFile(
+              projectFile: ProjectFile(
                 url: '/////////////////////////////////////////////////',
                 id: -1,
-                // userName: 'Lorem Ipsum',
-                // userPicture: '',
-                // date: DateTime(2024,8,7),
+                userName: 'Lorem Ipsum',
+                userPicture: '',
+                date: DateTime(2024,8,7),
               ),
               isLoading: true,
               fileImageUrl: null,
@@ -40,9 +40,8 @@ class FilesListViewComponent extends StatelessWidget {
               projectFile: projectFile[index],
               fileImageUrl: projectFile[index].url,
               isLoading: isLoading,
-              //userImageUrl: projectFile[index].userPicture,
+              userImageUrl: projectFile[index].userPicture,
               onFileClick: () => onFileClick(projectFile[index].url),
-              userImageUrl: '',
             ),
       shrinkWrap: true,
       primary: false,

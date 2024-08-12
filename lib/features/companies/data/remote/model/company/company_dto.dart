@@ -19,8 +19,8 @@ class CompanyDto {
   @JsonKey(name: "phone")
   final String phoneNumber;
 
-  //@JsonKey(name: "employeesNumber")
-  //final int employeesNumber;
+  @JsonKey(name: "employees_count")
+  final int employeesNumber;
   @JsonKey(name: "projects_count")
   final int projectsNumber;
   @JsonKey(name: "logo", defaultValue: "")
@@ -35,7 +35,7 @@ class CompanyDto {
     required this.phoneNumber,
     required this.logo,
     required this.projectsNumber,
-    // required this.employeesNumber,
+    required this.employeesNumber,
   });
 
   factory CompanyDto.fromJson(Map<String, dynamic> json) =>

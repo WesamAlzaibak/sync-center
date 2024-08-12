@@ -10,7 +10,7 @@ extension CompanyDtoX on CompanyDto {
         //description: description,
         email: email,
         phoneNumber: phoneNumber,
-        //employeesNumber: employeesNumber,
+        employeesNumber: employeesNumber,
         //location: location,
         logo: logo.isEmpty
             ? ""

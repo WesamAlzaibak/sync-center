@@ -138,11 +138,11 @@ class CompanyDetailsScreen extends StatelessWidget {
                                               BorderRadius.circular(8),
                                           color: Colors.white,
                                         ),
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(16.0),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(16.0),
                                           child: Column(
                                             children: [
-                                              Row(
+                                              const Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .start, // Add this line
@@ -153,7 +153,6 @@ class CompanyDetailsScreen extends StatelessWidget {
                                                     color: SyncColors.darkBlue,
                                                   ),
                                                   SizedBox(width: 8),
-                                                  // Add some spacing between icon and text
                                                   Expanded(
                                                     child: Text(
                                                       "Employees",
@@ -167,12 +166,11 @@ class CompanyDetailsScreen extends StatelessWidget {
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(height: 8),
-                                              // Add some spacing between rows
+                                              const SizedBox(height: 8),
                                               Center(
                                                 child: Text(
-                                                  "25",
-                                                  style: TextStyle(
+                                                  "${state.company.employeesNumber}",
+                                                  style: const TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.w700,
                                                     color: SyncColors.darkBlue,

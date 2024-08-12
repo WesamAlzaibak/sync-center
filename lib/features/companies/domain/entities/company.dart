@@ -11,7 +11,7 @@ class Company extends Equatable {
   final String phoneNumber;
   final int projectsNumber;
 
-  //final int employeesNumber;
+  final int employeesNumber;
   final String logo;
 
   const Company({
@@ -23,7 +23,7 @@ class Company extends Equatable {
     required this.phoneNumber,
     required this.logo,
     required this.projectsNumber,
-    //required this.employeesNumber,
+    required this.employeesNumber,
   });
 
   @override
@@ -36,6 +36,6 @@ class Company extends Equatable {
         phoneNumber,
         logo,
         projectsNumber,
-        //employeesNumber,
+        employeesNumber,
       ];
 }

@@ -10,17 +10,17 @@ ProjectFileDto _$ProjectFileDtoFromJson(Map<String, dynamic> json) =>
     ProjectFileDto(
       url: json['url'] as String,
       id: (json['id'] as num).toInt(),
-      // userName: json['userName'] as String,
-      // userPicture: json['userPicture'] as String? ??
-      //     '',
-      // date: json['createdAt'] as String,
+      userName: json['creator_name'] as String,
+      userPicture: json['creator_name'] as String? ??
+          '',
+      date: json['createdAt'] as String,
     );
 
 Map<String, dynamic> _$ProjectFileDtoToJson(ProjectFileDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'url': instance.url,
-      // 'userName': instance.userName,
-      // 'userPicture': instance.userPicture,
-      // 'createdAt': instance.date,
+      'creator_name': instance.userName,
+      'creator_image': instance.userPicture,
+      'createdAt': instance.date,
     };

@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-import 'package:sync_center_mobile/features/tasks/domain/enums/task_type.dart';
 
 import '../../../../core/utils/result.dart';
 import '../../data/remote/repositories/tasks_repository.dart';
