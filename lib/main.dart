@@ -27,7 +27,7 @@ void main() async {
       systemNavigationBarColor: SyncColors.f1,
     ),
   );
-  initFirebaseApp();
+  // initFirebaseApp();
   runApp(MyApp(initialRoute: initialRoute));
 }
 
