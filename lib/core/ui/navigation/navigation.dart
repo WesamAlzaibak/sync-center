@@ -20,7 +20,9 @@ import '../../../features/companies/ui/cubits/company_details/company_details_cu
 import '../../../features/companies/ui/screens/company_details_screen.dart';
 import '../../../features/firebase/ui/cubits/notifications_cubit/notifications_cubit.dart';
 import '../../../features/firebase/ui/screens/notifications_screen.dart';
+import '../../../features/home/ui/cubits/host_cubit/host_cubit.dart';
 import '../../../features/home/ui/screens/calender_screen.dart';
+import '../../../features/home/ui/screens/host screen.dart';
 import '../../../features/projects/ui/cubits/project_files/project_files_cubit.dart';
 import '../../../features/projects/ui/screens/project_files_screen.dart';
 import '../../../features/projects/ui/screens/tasks_screen.dart';
@@ -153,5 +155,12 @@ final router = GoRouter(initialLocation: LoginScreen.route, routes: [
     builder: (context, state) {
       return CalenderScreen();
     },
-  )
+  ),
+  GoRoute(
+    path: HostScreen.route,
+    builder: (context, state) => BlocProvider(
+      create: (context) => HostCubit(),
+      child: const HostScreen(),
+    ),
+  ),
 ]);

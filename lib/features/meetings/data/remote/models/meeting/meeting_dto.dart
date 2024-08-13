@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../../../companies/data/remote/model/company/company_dto.dart';
+import '../status_name/status_name_dto.dart';
+
 part 'meeting_dto.g.dart';
 
 @JsonSerializable()
@@ -8,19 +11,22 @@ class MeetingDto {
   final int id;
   @JsonKey(name: "title")
   final String title;
-  @JsonKey(name: "description")
-  final String description;
   @JsonKey(name: "start_date")
   final String startDate;
-  @JsonKey(name: "end_date")
-  final String endDate;
+  @JsonKey(name: "status_name")
+  final StatusNameDto statusName;
+  @JsonKey(name: "requester_type")
+  final String requesterType;
+  @JsonKey(name: "company")
+  final CompanyDto company;
 
   MeetingDto({
     required this.title,
-    required this.description,
     required this.id,
     required this.startDate,
-    required this.endDate,
+    required this.statusName,
+    required this.requesterType,
+    required this.company,
   });
 
   factory MeetingDto.fromJson(Map<String, dynamic> json) =>

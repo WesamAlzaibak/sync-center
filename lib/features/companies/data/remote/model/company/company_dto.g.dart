@@ -14,7 +14,7 @@ CompanyDto _$CompanyDtoFromJson(Map<String, dynamic> json) => CompanyDto(
       email: json["email"] as String,
       phoneNumber: json["phone"] as String,
       logo: json['logo'] as String,
-      projectsNumber: (json['projects_count'] as num).toInt(),
+      projectsNumber: (json["projects_count"]==null)?0:(json['projects_count'] as num).toInt(),
       employeesNumber:
       (json['employees_count'] as num).toInt(),
     );

@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                   left: 0,
                   right: 0,
                   child: HomeHeaderComponent(
-                    userName: state.username,
+                    userName: state.username, icon: Icons.notifications_sharp,onIconPressed: () {  },isHomeScreen: true,
                   ),
                 ),
               ],

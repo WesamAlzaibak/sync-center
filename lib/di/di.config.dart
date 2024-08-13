@@ -66,7 +66,13 @@ import '../features/firebase/domain/usecases/get_notifications_use_case.dart'
     as _i39;
 import '../features/firebase/ui/cubits/notifications_cubit/notifications_cubit.dart'
     as _i40;
+import '../features/home/ui/cubits/calender_cubit/calender_cubit.dart' as _i53;
 import '../features/home/ui/cubits/home_cubit/home_cubit.dart' as _i31;
+import '../features/meetings/data/remote/api/meetings_api.dart' as _i50;
+import '../features/meetings/data/remote/repositories/meetings_repository.dart'
+    as _i51;
+import '../features/meetings/domain/usecases/get_client_meetings_use_case.dart'
+    as _i52;
 import '../features/projects/data/remote/apis/projects_api.dart' as _i27;
 import '../features/projects/data/remote/repositories/projects_remote_repository.dart'
     as _i28;
@@ -199,6 +205,16 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i50.ProjectFilesCubit>(() => _i50.ProjectFilesCubit(
           getProjectFilesUseCase: gh<_i47.GetProjectFilesUseCase>(),
           uploadProjectFileUseCase: gh<_i49.UploadProjectFileUseCase>(),
+        ));
+
+    gh.factory<_i50.MeetingsApi>(
+        () => _i50.MeetingsApi(remoteManager: gh<_i7.RemoteManager>()));
+    gh.factory<_i51.MeetingsRemoteRepository>(() =>
+        _i51.MeetingsRemoteRepository(meetingsApi: gh<_i50.MeetingsApi>()));
+    gh.factory<_i52.GetMeetingsUseCase>(() => _i52.GetMeetingsUseCase(
+        meetingsRemoteRepository: gh<_i51.MeetingsRemoteRepository>()));
+    gh.factory<_i53.CalenderCubit>(() => _i53.CalenderCubit(
+          getMeetingsUseCase: gh<_i52.GetMeetingsUseCase>(),
         ));
     return this;
   }

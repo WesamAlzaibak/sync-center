@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:sync_center_mobile/features/home/ui/screens/home_screen.dart';
+import 'package:sync_center_mobile/features/home/ui/screens/host%20screen.dart';
 import 'core/ui/navigation/navigation.dart';
 import 'core/ui/theme/colors.dart';
 import 'core/utils/app_local.dart';
@@ -18,7 +18,7 @@ void main() async {
   final isLoggedIn = authLocalRepository.isLoggedIn();
   String initialRoute;
   if (isLoggedIn) {
-    initialRoute = HomeScreen.route;
+    initialRoute = HostScreen.route;
   } else {
     initialRoute = LoginScreen.route;
   }
@@ -27,7 +27,7 @@ void main() async {
       systemNavigationBarColor: SyncColors.f1,
     ),
   );
-  // initFirebaseApp();
+   initFirebaseApp();
   runApp(MyApp(initialRoute: initialRoute));
 }
 

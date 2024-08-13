@@ -74,17 +74,6 @@ class HomeSuccessState extends HomeState {
   List<Object> get props => [projects];
 }
 
-class NoChildrenState extends HomeState {
-  const NoChildrenState(super.username);
-
-  @override
-  NoChildrenState copy({String? username}) =>
-      NoChildrenState(username ?? this.username);
-
-  @override
-  List<Object> get props => [];
-}
-
 class NoProjectState extends HomeState {
   const NoProjectState(super.username);
 

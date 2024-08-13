@@ -21,7 +21,7 @@ class CompanyDto {
 
   @JsonKey(name: "employees_count")
   final int employeesNumber;
-  @JsonKey(name: "projects_count")
+  @JsonKey(name: "projects_count",defaultValue: 0)
   final int projectsNumber;
   @JsonKey(name: "logo", defaultValue: "")
   final String logo;
