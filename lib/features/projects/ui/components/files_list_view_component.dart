@@ -151,7 +151,7 @@ class FilesItems extends StatelessWidget {
                               : userImageUrl!.isEmpty
                                   ? Center(
                                       child: Text(
-                                        "Wesam"[0].toUpperCase(),
+                                        projectFile.userName[0].toUpperCase(),
                                         style: const TextStyle(
                                           fontSize: 28,
                                           fontWeight: FontWeight.w700,
@@ -189,9 +189,9 @@ class FilesItems extends StatelessWidget {
                                 height: 5,
                               ),
                               Text(
-                                isToday(DateTime(2024, 7, 8))
+                                isToday(projectFile.date)
                                     ? "published Today"
-                                    : "published in ${DateFormat('dd/MM/yyyy').format(DateTime(2024, 7, 8))}",
+                                    : "published in ${DateFormat('dd/MM/yyyy').format(projectFile.date)}",
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                   fontSize: 12,

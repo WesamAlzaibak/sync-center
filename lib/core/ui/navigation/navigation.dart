@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:sync_center_mobile/features/auth/ui/screens/login_screen.dart';
 import 'package:sync_center_mobile/features/home/ui/cubits/home_cubit/home_cubit.dart';
 import 'package:sync_center_mobile/features/home/ui/screens/home_screen.dart';
+import 'package:sync_center_mobile/features/meetings/ui/cubits/meetings_cubit/meetings_cubit.dart';
+import 'package:sync_center_mobile/features/meetings/ui/screens/meeetings_screen.dart';
 import 'package:sync_center_mobile/features/projects/ui/cubits/project_details/project_details_cubit.dart';
 import 'package:sync_center_mobile/features/projects/ui/cubits/tasks/tasks_cubit.dart';
 import 'package:sync_center_mobile/features/projects/ui/screens/project_details_screen.dart';
@@ -21,7 +23,6 @@ import '../../../features/companies/ui/screens/company_details_screen.dart';
 import '../../../features/firebase/ui/cubits/notifications_cubit/notifications_cubit.dart';
 import '../../../features/firebase/ui/screens/notifications_screen.dart';
 import '../../../features/home/ui/cubits/host_cubit/host_cubit.dart';
-import '../../../features/home/ui/screens/calender_screen.dart';
 import '../../../features/home/ui/screens/host screen.dart';
 import '../../../features/projects/ui/cubits/project_files/project_files_cubit.dart';
 import '../../../features/projects/ui/screens/project_files_screen.dart';
@@ -151,16 +152,20 @@ final router = GoRouter(initialLocation: LoginScreen.route, routes: [
     },
   ),
   GoRoute(
-    path: CalenderScreen.route,
-    builder: (context, state) {
-      return CalenderScreen();
-    },
-  ),
-  GoRoute(
     path: HostScreen.route,
     builder: (context, state) => BlocProvider(
       create: (context) => HostCubit(),
       child: const HostScreen(),
     ),
+  ),
+  GoRoute(
+    path: ClientMeetingsScreen.route,
+    builder: (context, state) {
+      return BlocProvider<ClientMeetingsCubit>(
+        create: (BuildContext context) =>
+        getIt.get<ClientMeetingsCubit>()..fetchClientMeetingsData(),
+        child: ClientMeetingsScreen(),
+      );
+    },
   ),
 ]);

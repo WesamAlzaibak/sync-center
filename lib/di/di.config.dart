@@ -71,8 +71,16 @@ import '../features/home/ui/cubits/home_cubit/home_cubit.dart' as _i31;
 import '../features/meetings/data/remote/api/meetings_api.dart' as _i50;
 import '../features/meetings/data/remote/repositories/meetings_repository.dart'
     as _i51;
+import '../features/meetings/domain/usecases/accept_reject_meeting_use_case.dart'
+    as _i54;
+import '../features/meetings/domain/usecases/create_meeting_use_case.dart'
+    as _i56;
+import '../features/meetings/domain/usecases/delete_meeting_use_case.dart'
+    as _i55;
 import '../features/meetings/domain/usecases/get_client_meetings_use_case.dart'
     as _i52;
+import '../features/meetings/ui/cubits/meetings_cubit/meetings_cubit.dart'
+    as _i57;
 import '../features/projects/data/remote/apis/projects_api.dart' as _i27;
 import '../features/projects/data/remote/repositories/projects_remote_repository.dart'
     as _i28;
@@ -206,7 +214,6 @@ extension GetItInjectableX on _i1.GetIt {
           getProjectFilesUseCase: gh<_i47.GetProjectFilesUseCase>(),
           uploadProjectFileUseCase: gh<_i49.UploadProjectFileUseCase>(),
         ));
-
     gh.factory<_i50.MeetingsApi>(
         () => _i50.MeetingsApi(remoteManager: gh<_i7.RemoteManager>()));
     gh.factory<_i51.MeetingsRemoteRepository>(() =>
@@ -215,6 +222,19 @@ extension GetItInjectableX on _i1.GetIt {
         meetingsRemoteRepository: gh<_i51.MeetingsRemoteRepository>()));
     gh.factory<_i53.CalenderCubit>(() => _i53.CalenderCubit(
           getMeetingsUseCase: gh<_i52.GetMeetingsUseCase>(),
+        ));
+    gh.factory<_i54.AcceptRejectMeetingUseCase>(() =>
+        _i54.AcceptRejectMeetingUseCase(
+            meetingsRemoteRepository: gh<_i51.MeetingsRemoteRepository>()));
+    gh.factory<_i55.DeleteMeetingUseCase>(() => _i55.DeleteMeetingUseCase(
+        meetingsRemoteRepository: gh<_i51.MeetingsRemoteRepository>()));
+    gh.factory<_i56.CreateMeetingUseCase>(() => _i56.CreateMeetingUseCase(
+        meetingsRemoteRepository: gh<_i51.MeetingsRemoteRepository>()));
+    gh.factory<_i57.ClientMeetingsCubit>(() => _i57.ClientMeetingsCubit(
+          getMeetingsUseCase: gh<_i52.GetMeetingsUseCase>(),
+          acceptRejectMeetingUseCase: gh<_i54.AcceptRejectMeetingUseCase>(),
+          deleteMeetingUseCase: gh<_i55.DeleteMeetingUseCase>(),
+          createMeetingUseCase: gh<_i56.CreateMeetingUseCase>(),
         ));
     return this;
   }

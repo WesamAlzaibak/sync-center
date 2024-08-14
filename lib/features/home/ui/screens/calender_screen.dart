@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sync_center_mobile/features/home/ui/components/meetings_info_bottom_sheet_component.dart';
+import 'package:sync_center_mobile/features/meetings/ui/screens/meeetings_screen.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../../../../core/ui/reusables/snackbars/default_snack_bar.dart';
 import '../../../../core/ui/theme/colors.dart';
 import '../../../meetings/domain/entities/meeting.dart';
-import '../components/home_header_component.dart';
 import '../cubits/calender_cubit/calender_cubit.dart';
 import '../cubits/calender_cubit/calender_state.dart';
 
@@ -20,7 +21,6 @@ class CalenderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocListener<CalenderCubit, CalenderState>(
       listenWhen: (previousState, state) {
         return previousState is! CalenderErrorState &&
@@ -36,68 +36,87 @@ class CalenderScreen extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             backgroundColor: Colors.grey[100],
-            body: Stack(
-              children: [
-                RefreshIndicator(
-                  edgeOffset: 32,
-                  key: _refreshIndicatorKey,
-                  onRefresh: () async {},
-                  color: SyncColors.darkBlue,
-                  child: SingleChildScrollView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 100),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 30),
-                          child: SizedBox(
-                            height: 400,
-                            child: SfCalendar(
-                              view: CalendarView.week,
-                              headerHeight: 50,
-                              showDatePickerButton: true,
-                              showCurrentTimeIndicator: true,
-                              showNavigationArrow: true,
-                              showTodayButton: true,
-                              firstDayOfWeek: 6,
-                              initialSelectedDate: DateTime.now(),
-                              initialDisplayDate: DateTime.now(),
-                              dataSource: state is CalenderSuccessState?MeetingDataSource(state.meetings):MeetingDataSource([]),
-                              onTap: (calendarTapDetails) {
-                                if (calendarTapDetails.appointments != null && calendarTapDetails.appointments!.isNotEmpty) {
-                                  final MeetingAppointment appointment = calendarTapDetails.appointments!.first as MeetingAppointment;
-                                  final Meeting meeting = appointment.meeting;
-                                  showModalBottomSheet(
-                                    context: context,
-                                    backgroundColor: Colors.grey[100],
-                                    isScrollControlled: true,
-                                    builder: (context) {
-                                      return MeetingsInformationBottomSheetComponent(
-                                        meeting: meeting,
-                                      );
-                                    },
-                                  );
-                                }
-                              },
-                            )
-                          ),
-                        ),
-                      ],
-                    ),
+            appBar: AppBar(
+              forceMaterialTransparency: true,
+              elevation: 0,
+              toolbarHeight: 60,
+              leadingWidth: 80,
+              centerTitle: true,
+              actions: [
+                GestureDetector(
+                  onTap: () async {
+                    await context.push(ClientMeetingsScreen.route);
+                    _refreshIndicatorKey.currentState!.show();
+                  },
+                  child: const Icon(
+                    Icons.calendar_month,
+                    size: 30,
+                    color: SyncColors.darkBlue,
                   ),
                 ),
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  child: HomeHeaderComponent(
-                    userName: "Wesam Alzaibak",
-                    icon: Icons.calendar_month,
-                    onIconPressed: () {},
-                    isHomeScreen: false,
-                  ),
-                ),
+                const SizedBox(
+                  width: 20,
+                )
               ],
+              title: const Text(
+                "Your Meetings",
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24,
+                  color: SyncColors.black,
+                ),
+              ),
+            ),
+            body: RefreshIndicator(
+              edgeOffset: 32,
+              key: _refreshIndicatorKey,
+              onRefresh: () async {},
+              color: SyncColors.darkBlue,
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 30),
+                      child: SizedBox(
+                          height: 400,
+                          child: SfCalendar(
+                            view: CalendarView.week,
+                            headerHeight: 50,
+                            showDatePickerButton: true,
+                            showCurrentTimeIndicator: true,
+                            showNavigationArrow: true,
+                            showTodayButton: true,
+                            firstDayOfWeek: 6,
+                            initialSelectedDate: DateTime.now(),
+                            initialDisplayDate: DateTime.now(),
+                            dataSource: state is CalenderSuccessState
+                                ? MeetingDataSource(state.meetings)
+                                : MeetingDataSource([]),
+                            onTap: (calendarTapDetails) {
+                              if (calendarTapDetails.appointments != null &&
+                                  calendarTapDetails.appointments!.isNotEmpty) {
+                                final MeetingAppointment appointment =
+                                    calendarTapDetails.appointments!.first
+                                        as MeetingAppointment;
+                                final Meeting meeting = appointment.meeting;
+                                showModalBottomSheet(
+                                  context: context,
+                                  backgroundColor: Colors.grey[100],
+                                  isScrollControlled: true,
+                                  builder: (context) {
+                                    return MeetingsInformationBottomSheetComponent(
+                                      meeting: meeting,
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                          )),
+                    ),
+                  ],
+                ),
+              ),
             ),
           );
         },
@@ -119,7 +138,6 @@ class MeetingDataSource extends CalendarDataSource {
   }
 }
 
-
 class MeetingAppointment extends Appointment {
   final Meeting meeting;
 
@@ -129,8 +147,8 @@ class MeetingAppointment extends Appointment {
     required DateTime endTime,
     required String subject,
   }) : super(
-    startTime: startTime,
-    endTime: endTime,
-    subject: subject,
-  );
+          startTime: startTime,
+          endTime: endTime,
+          subject: subject,
+        );
 }

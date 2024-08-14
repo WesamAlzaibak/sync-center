@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../theme/colors.dart';
+import '../../../../core/ui/theme/colors.dart';
 
-class DefaultTextField extends StatelessWidget {
-  const DefaultTextField(
+
+class DateTextField extends StatelessWidget {
+  const DateTextField(
       {super.key,
-      this.hint,
-      this.label,
-      this.prefixIcon,
-      this.suffixIcon,
-      this.obscureText = false,
-      this.keyboardType = TextInputType.text,
-      this.inputFormatters,
-      this.validator,
-      this.inputColor,
-      required this.controller});
+        this.hint,
+        this.label,
+        this.prefixIcon,
+        this.suffixIcon,
+        this.obscureText = false,
+        this.keyboardType = TextInputType.text,
+        this.inputFormatters,
+        this.validator,
+        this.onTap,
+        this.inputColor,
+        required this.controller});
 
   final String? hint;
   final Widget? label;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool obscureText;
+  final Color? inputColor;
   final TextEditingController controller;
   final TextInputType keyboardType;
-  final Color? inputColor;
+  final void Function()? onTap;
   final List<TextInputFormatter>? inputFormatters;
   final FormFieldValidator<String>? validator;
 
@@ -34,9 +37,9 @@ class DefaultTextField extends StatelessWidget {
       autocorrect: false,
       keyboardType: keyboardType,
       obscureText: obscureText,
-      style:
-          TextStyle(fontSize: 16, color: inputColor ?? SyncColors.background),
+      style: TextStyle(fontSize: 16,color: inputColor ?? SyncColors.background),
       validator: validator,
+      onTap: onTap,
       controller: controller,
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
@@ -62,10 +65,10 @@ class DefaultTextField extends StatelessWidget {
         focusedErrorBorder: _outlineInputBorder(color: SyncColors.red),
         errorBorder: _outlineInputBorder(color: SyncColors.red),
         disabledBorder:
-            _outlineInputBorder(color: SyncColors.pistach.withOpacity(0.5)),
+        _outlineInputBorder(color: SyncColors.pistach.withOpacity(0.5)),
         suffixIcon: suffixIcon,
         contentPadding:
-            const EdgeInsetsDirectional.symmetric(horizontal: 26, vertical: 18),
+        const EdgeInsetsDirectional.symmetric(horizontal: 26, vertical: 18),
       ),
     );
   }
