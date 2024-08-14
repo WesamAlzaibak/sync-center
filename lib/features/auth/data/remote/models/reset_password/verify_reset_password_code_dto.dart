@@ -4,7 +4,7 @@ part 'verify_reset_password_code_dto.g.dart';
 
 @JsonSerializable()
 class VerifyResetPasswordCodeDto {
-  @JsonKey(name: "otp")
+  @JsonKey(name: "code")
   final String code;
   @JsonKey(name: "email")
   final String email;

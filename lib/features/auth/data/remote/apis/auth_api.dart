@@ -37,7 +37,7 @@ class AuthApi {
           resetPasswordCredentialsDto}) async {
     await _remoteManager.request<Map<String, dynamic>>(
       RequestMethod.post,
-      "/auth/reset-password",
+      "/user/edit-password",
       body: resetPasswordCredentialsDto,
     );
   }
@@ -55,7 +55,7 @@ class AuthApi {
       {required VerifyResetPasswordCodeDto verifyResetPasswordCodeDto}) async {
     await _remoteManager.request<Map<String, dynamic>>(
       RequestMethod.post,
-      "/auth/check-reset-password",
+      "/user/check-code",
       body: verifyResetPasswordCodeDto,
     );
   }
@@ -65,7 +65,7 @@ class AuthApi {
   }) async {
     await _remoteManager.request<Map<String, dynamic>>(
       RequestMethod.post,
-      "/auth/forgot-password",
+      "/user/reset-password",
       body: forgetPasswordCredentialsDto,
     );
   }

@@ -4,13 +4,13 @@ part 'reset_password_credentials_dto.g.dart';
 
 @JsonSerializable()
 class ResetPasswordCredentialsDto {
-  @JsonKey(name: "token")
+  @JsonKey(name: "code")
   final String code;
   @JsonKey(name: "email")
   final String email;
-  @JsonKey(name: "password")
+  @JsonKey(name: "new_password")
   final String newPassword;
-  @JsonKey(name: "confirmPassword")
+  @JsonKey(name: "new_password_confirmation")
   final String confirmNewPassword;
 
   ResetPasswordCredentialsDto({

@@ -297,7 +297,7 @@ class MeetingsItems extends StatelessWidget {
                     top: 16,
                     child: CircleAvatar(
                       radius: 25,
-                      backgroundColor: SyncColors.red.withOpacity(0.20),
+                      backgroundColor: SyncColors.red.withOpacity(0.12),
                       child: Center(
                         child: GestureDetector(
                           onTap: onMeetingDeleteClick,

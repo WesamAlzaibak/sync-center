@@ -46,7 +46,7 @@ class OneTimePasswordTextField extends StatelessWidget {
       ),
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly,
-        LengthLimitingTextInputFormatter(4),
+        LengthLimitingTextInputFormatter(5),
       ],
       enabled: true,
       disabledPinTheme: defaultPinTheme.copyWith(

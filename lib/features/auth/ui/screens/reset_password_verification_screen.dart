@@ -112,10 +112,10 @@ class _ResetPasswordVerificationScreenState
                 ),
                 const SizedBox(height: 20),
                 OneTimePasswordTextField(
-                  length: 4,
+                  length: 5,
                   pinController: pinTextEditingController,
                   onChanged: (value) {
-                    if (pinTextEditingController.text.length == 4) {
+                    if (pinTextEditingController.text.length == 5) {
                       context
                           .read<ResetPasswordVerificationCubit>()
                           .toggleVerifyButtonState(true);

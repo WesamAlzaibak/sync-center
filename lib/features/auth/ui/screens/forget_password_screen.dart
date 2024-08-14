@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sync_center_mobile/features/auth/ui/screens/reset_password_screen.dart';
+import 'package:sync_center_mobile/features/auth/ui/screens/reset_password_verification_screen.dart';
 
 
 import '../../../../core/ui/reusables/buttons/default_button.dart';
@@ -55,7 +55,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
           listener: (BuildContext context, state) {
             if (state is ForgetPasswordSuccessState) {
               context.push(
-                ResetPasswordScreen.route,
+                ResetPasswordVerificationScreen.route,
                 extra: {
                   "email": state.email,
                 },
@@ -90,7 +90,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               ),
               const SizedBox(height: 26),
               DefaultTextField(
-                keyboardType: TextInputType.phone,
+                keyboardType: TextInputType.emailAddress,
                 hint: 'example@gmail.com',
                 prefixIcon:
                 const Icon(Icons.email_outlined, color: SyncColors.background),

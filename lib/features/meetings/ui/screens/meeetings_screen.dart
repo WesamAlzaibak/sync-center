@@ -139,61 +139,61 @@ class ClientMeetingsScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
                 child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
-                    child: Column(
-                      children: [
-                        Skeletonizer(
-                          enabled: state is ClientMeetingsLoadingState,
-                          child: const Text(
-                            "This screen shows all your upcoming and past meetings. Tap any meeting to view its details and manage your schedule.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: SyncColors.black,
-                            ),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+                  child: Column(
+                    children: [
+                      Skeletonizer(
+                        enabled: state is ClientMeetingsLoadingState,
+                        child: const Text(
+                          "This screen shows all your upcoming and past meetings. Tap any meeting to view its details and manage your schedule.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            color: SyncColors.black,
                           ),
                         ),
-                        const SizedBox(
-                          height: 20,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ClientMeetingsListViewComponent(
+                        meetings: state is ClientMeetingsSuccessState
+                            ? state.meetings
+                            : [],
+                        isLoading: state is ClientMeetingsLoadingState,
+                        onMeetingAcceptClick: (id) => _showAlertDialog(
+                          context: context,
+                          onConfirm: () => context
+                              .read<ClientMeetingsCubit>()
+                              .acceptRejectMeeting(meetingId: id, status: 1),
+                          isAccept: true,
+                          isDelete: true,
                         ),
-                        ClientMeetingsListViewComponent(
-                          meetings: state is ClientMeetingsSuccessState
-                              ? state.meetings
-                              : [],
-                          isLoading: state is ClientMeetingsLoadingState,
-                          onMeetingAcceptClick: (id) => _showAlertDialog(
+                        onMeetingRejectClick: (id) {
+                          _showAlertDialog(
                             context: context,
                             onConfirm: () => context
                                 .read<ClientMeetingsCubit>()
-                                .acceptRejectMeeting(meetingId: id, status: 1),
-                            isAccept: true,
+                                .acceptRejectMeeting(meetingId: id, status: 2),
+                            isAccept: false,
+                            isDelete: false,
+                          );
+                        },
+                        onMeetingDeleteClick: (id) {
+                          _showAlertDialog(
+                            context: context,
+                            onConfirm: () => context
+                                .read<ClientMeetingsCubit>()
+                                .deleteMeeting(meetingId: id),
+                            isAccept: false,
                             isDelete: true,
-                          ),
-                          onMeetingRejectClick: (id) {
-                            _showAlertDialog(
-                              context: context,
-                              onConfirm: () => context
-                                  .read<ClientMeetingsCubit>()
-                                  .acceptRejectMeeting(
-                                      meetingId: id, status: 2),
-                              isAccept: false,
-                              isDelete: false,
-                            );
-                          },
-                          onMeetingDeleteClick: (id) {
-                            _showAlertDialog(
-                              context: context,
-                              onConfirm: () => context
-                                  .read<ClientMeetingsCubit>()
-                                  .deleteMeeting(meetingId: id),
-                              isAccept: false,
-                              isDelete: true,
-                            );
-                          },
-                        )
-                      ],
-                    )),
+                          );
+                        },
+                      )
+                    ],
+                  ),
+                ),
               ),
             ),
             floatingActionButton: FloatingActionButton(

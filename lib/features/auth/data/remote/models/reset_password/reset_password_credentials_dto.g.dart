@@ -9,17 +9,17 @@ part of 'reset_password_credentials_dto.dart';
 ResetPasswordCredentialsDto _$ResetPasswordCredentialsDtoFromJson(
         Map<String, dynamic> json) =>
     ResetPasswordCredentialsDto(
-      code: json['token'] as String,
+      code: json['code'] as String,
           email: json['email'] as String,
-      newPassword: json['password'] as String,
-      confirmNewPassword: json['confirmPassword'] as String,
+      newPassword: json['new_password'] as String,
+      confirmNewPassword: json['new_password_confirmation'] as String,
     );
 
 Map<String, dynamic> _$ResetPasswordCredentialsDtoToJson(
         ResetPasswordCredentialsDto instance) =>
     <String, dynamic>{
-      'token': instance.code,
+      'code': instance.code,
       'email': instance.email,
-      'password': instance.newPassword,
-      'confirmPassword': instance.confirmNewPassword,
+      'new_password': instance.newPassword,
+      'new_password_confirmation': instance.confirmNewPassword,
     };
