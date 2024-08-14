@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:sync_center_mobile/features/meetings/ui/companents/create_meeting_bottom_sheet.dart';
+import 'package:sync_center_mobile/features/meetings/ui/components/create_meeting_bottom_sheet.dart';
 
 import '../../../../core/ui/reusables/buttons/default_back_button.dart';
 import '../../../../core/ui/reusables/snackbars/default_snack_bar.dart';
 import '../../../../core/ui/theme/colors.dart';
-import '../companents/client_meetings_list_view.dart';
+import '../components/client_meetings_list_view.dart';
 import '../cubits/meetings_cubit/meetings_cubit.dart';
 import '../cubits/meetings_cubit/meetings_state.dart';
 
