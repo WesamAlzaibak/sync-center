@@ -20,11 +20,13 @@ class FirebaseApi {
       },
     );
   }
+
   Future<List<NotificationDto>> getNotifications() async {
     final response = await _remoteManager.request<Map<String, dynamic>>(
       RequestMethod.get,
       "/user/notification",
     );
+    //should be data not notifications key
     final normalResponse = NormalResponse.fromJson(
       response.data ?? {},
           (data) => (data as List<dynamic>)
