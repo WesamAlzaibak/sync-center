@@ -26,7 +26,6 @@ class FirebaseApi {
       RequestMethod.get,
       "/user/notification",
     );
-    //should be data not notifications key
     final normalResponse = NormalResponse.fromJson(
       response.data ?? {},
           (data) => (data as List<dynamic>)
