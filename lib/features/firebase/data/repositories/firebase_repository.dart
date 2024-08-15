@@ -20,19 +20,11 @@ class FirebaseRepository {
     });
   }
 
-  Future<Result<void>> deleteToken({
-    required String fcmToken,
-  }) async {
-    return await asyncRunCatching<void>(() async {
-      await _firebaseApi.deleteFcmToken(fcmToken: fcmToken);
-    });
-  }
-
-  Future<Result<List<FcmNotification>>> getNotifications(int page, int pageSize) async {
+  Future<Result<List<FcmNotification>>> getNotifications() async {
     return await asyncRunCatching<List<FcmNotification>>(() async {
-      final remoteNotifications = await _firebaseApi.getNotifications(page, pageSize);
-      final notifications = remoteNotifications.map((e) => e.toNotification()).toList();
-      return notifications;
+      final notificationsDto = await _firebaseApi.getNotifications();
+      final userProjects = notificationsDto.toNotifications();
+      return userProjects;
     });
   }
 }

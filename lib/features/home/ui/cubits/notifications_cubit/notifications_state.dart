@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../domain/entities/fcm_notification.dart';
+import '../../../../firebase/domain/entities/fcm_notification.dart';
+
 
 
 class NotificationsState extends Equatable {

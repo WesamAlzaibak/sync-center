@@ -12,9 +12,9 @@ class GetNotificationsUseCase {
 
   final FirebaseRepository _notificationsRepository;
 
-  Future<Result<List<FcmNotification>>> call(int page, int pageSize) async {
+  Future<Result<List<FcmNotification>>> call() async {
     final result =
-        await _notificationsRepository.getNotifications(page, pageSize);
+        await _notificationsRepository.getNotifications();
     return result;
   }
 }

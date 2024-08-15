@@ -8,16 +8,19 @@ class NotificationDto {
   final int id;
   @JsonKey(name: "title")
   final String title;
-  @JsonKey(name: "content")
+  @JsonKey(name: "body")
   final String description;
   @JsonKey(name: "updatedAt")
   final String date;
+  @JsonKey(name: "is_seen")
+  final bool isSeen;
 
   NotificationDto({
     required this.id,
     required this.title,
     required this.description,
     required this.date,
+    required this.isSeen,
   });
 
   factory NotificationDto.fromJson(Map<String, dynamic> json) =>

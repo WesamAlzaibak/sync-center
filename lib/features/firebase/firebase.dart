@@ -1,14 +1,12 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:sync_center_mobile/core/ui/theme/colors.dart';
+import 'package:sync_center_mobile/di/di.dart';
+import 'package:sync_center_mobile/features/auth/data/local/repositories/auth_local_repository.dart';
+import 'package:sync_center_mobile/features/firebase/data/repositories/firebase_repository.dart';
 
-
-import '../../core/ui/theme/colors.dart';
-import '../../di/di.dart';
-import '../auth/data/local/repositories/auth_local_repository.dart';
-import 'data/repositories/firebase_repository.dart';
 import 'firebase_options.dart';
 
 
@@ -38,7 +36,7 @@ void initFirebaseApp() async {
 
   // Create LocalNotificationsPlugin..
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+  FlutterLocalNotificationsPlugin();
 
   // Create Initialization settings..
   const androidSetting = AndroidInitializationSettings('notification');
@@ -48,7 +46,7 @@ void initFirebaseApp() async {
     requestSoundPermission: true,
   );
   const initializationSettings =
-      InitializationSettings(android: androidSetting, iOS: iosSetting);
+  InitializationSettings(android: androidSetting, iOS: iosSetting);
 
   // Initialize the plugin..
   await flutterLocalNotificationsPlugin.initialize(
@@ -61,13 +59,13 @@ void initFirebaseApp() async {
     'High Importance Notifications',
     description: 'This channel is used for important notifications.',
     importance: Importance.max,
-    ledColor: SyncColors.background,
+    ledColor: SyncColors.lightBlue,
   );
 
   // Create the notifications_cubit channel..
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
+      AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
 
   // Listen on any messages while the application is in the foreground..
@@ -98,12 +96,12 @@ void initFirebaseApp() async {
 
   // Listen for any changes in the FCM token..
   FirebaseMessaging.instance.onTokenRefresh.listen(
-    (fcmToken) async {
+        (fcmToken) async {
       // Send the new Fcm token to the server.
       await getIt.get<FirebaseRepository>().updateFcmToken(fcmToken: fcmToken);
     },
   ).onError(
-    (err) {
+        (err) {
       debugPrint(err);
     },
   );

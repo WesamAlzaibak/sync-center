@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/models/normal_response.dart';
-import '../../../../core/data/models/pagination_response.dart';
 import '../../../../core/data/remote/remote_manager.dart';
 import '../models/notification_dto.dart';
 
@@ -15,32 +14,24 @@ class FirebaseApi {
   Future<void> updateFcmToken({required String fcmToken}) async {
     await _remoteManager.request<Map<String, dynamic>>(
       RequestMethod.post,
-      "/parents/fcm",
+      "/user/device-token",
       body: {
-        "fcmToken": fcmToken
+        "device_token": fcmToken
       },
     );
   }
-
-  Future<void> deleteFcmToken({required String fcmToken}) async {
-    await _remoteManager.request<Map<String, dynamic>>(
-      RequestMethod.delete,
-      "/parents/fcm",
-      body: {
-        "fcmToken": fcmToken
-      },
-    );
-  }
-
-  Future<List<NotificationDto>> getNotifications(int page, int pageSize) async {
+  Future<List<NotificationDto>> getNotifications() async {
     final response = await _remoteManager.request<Map<String, dynamic>>(
       RequestMethod.get,
-      "/parents/notifications?page=$page&pageSize=$pageSize",
+      "/user/notification",
     );
     final normalResponse = NormalResponse.fromJson(
-        response.data ?? {},
-            (data) => PaginationResponse.fromJson(data as Map<String, dynamic>,
-                (data) => NotificationDto.fromJson(data as Map<String, dynamic>)));
-    return normalResponse.data.items;
+      response.data ?? {},
+          (data) => (data as List<dynamic>)
+          .map((item) => NotificationDto.fromJson(item as Map<String, dynamic>))
+          .toList(),
+    );
+    return normalResponse.data;
   }
+
 }

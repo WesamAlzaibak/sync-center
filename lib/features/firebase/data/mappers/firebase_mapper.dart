@@ -7,5 +7,11 @@ extension NotificationDtoX on NotificationDto {
         title: title,
         description: description,
         date: DateTime.parse(date),
+        isSeen: isSeen,
       );
+}
+
+extension ProjectsListX on List<NotificationDto> {
+  List<FcmNotification> toNotifications() =>
+      map((e) => e.toNotification()).toList();
 }

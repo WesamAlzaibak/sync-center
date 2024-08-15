@@ -64,10 +64,10 @@ import '../features/firebase/data/repositories/firebase_repository.dart'
     as _i38;
 import '../features/firebase/domain/usecases/get_notifications_use_case.dart'
     as _i39;
-import '../features/firebase/ui/cubits/notifications_cubit/notifications_cubit.dart'
-    as _i40;
+
 import '../features/home/ui/cubits/calender_cubit/calender_cubit.dart' as _i53;
 import '../features/home/ui/cubits/home_cubit/home_cubit.dart' as _i31;
+import '../features/home/ui/cubits/notifications_cubit/notifications_cubit.dart' as _i40;
 import '../features/meetings/data/remote/api/meetings_api.dart' as _i50;
 import '../features/meetings/data/remote/repositories/meetings_repository.dart'
     as _i51;
@@ -145,6 +145,7 @@ extension GetItInjectableX on _i1.GetIt {
           authRemoteRepository: gh<_i14.AuthRemoteRepository>(),
           authLocalRepository: gh<_i31.AuthLocalRepository>(),
           userLocalRepository: gh<_i28.UserLocalRepository>(),
+          firebaseRepository: gh<_i38.FirebaseRepository>(),
         ));
     gh.factory<_i39.ResetPasswordCubit>(() => _i39.ResetPasswordCubit(
         resetPasswordUseCase: gh<_i26.ResetPasswordUseCase>()));

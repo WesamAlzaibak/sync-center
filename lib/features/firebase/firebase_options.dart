@@ -19,7 +19,7 @@ class DefaultFirebaseOptions {
     if (kIsWeb) {
       throw UnsupportedError(
         'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
+            'you can reconfigure this by running the FlutterFire CLI again.',
       );
     }
     switch (defaultTargetPlatform) {
@@ -30,17 +30,17 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD09eY-yeD0_TGlmCW2dReIDtkkzUrwH6Y',
-    appId: '1:201507551455:android:f128499d1aaecc6299d16a',
+    apiKey: 'AIzaSyAY68VnV7AQY7TUuw2IEFAE_DvLII-nb2w',
+    appId: '1:706747477585:android:b099b4249d261200229270',
     messagingSenderId: '201507551455',
-    projectId: 'moushref-9a860',
-    storageBucket: 'moushref-9a860.appspot.com',
+    projectId: 'sync-center-mobile',
+    storageBucket: 'sync-center-mobile.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAX0mnt2NSBlMqYQCjNeInRmbtlMYLnIOc',
     appId: '1:201507551455:ios:0276c4b9cf3dd3dc99d16a',
     messagingSenderId: '201507551455',
-    projectId: 'moushref-9a860',
-    storageBucket: 'moushref-9a860.appspot.com',
+    projectId: 'sync-center-mobile',
+    storageBucket: 'sync-center-mobile.appspot.com',
     iosBundleId: 'com.moushref.moushrefParents',
   );
 

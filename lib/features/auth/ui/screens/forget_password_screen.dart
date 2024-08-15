@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sync_center_mobile/features/auth/ui/screens/reset_password_verification_screen.dart';
 
-
 import '../../../../core/ui/reusables/buttons/default_button.dart';
 import '../../../../core/ui/reusables/scaffolds/auth_scaffold.dart';
 import '../../../../core/ui/reusables/snackbars/default_snack_bar.dart';
