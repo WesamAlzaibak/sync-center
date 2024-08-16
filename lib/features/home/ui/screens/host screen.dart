@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sync_center_mobile/features/home/ui/cubits/calender_cubit/calender_cubit.dart';
+import 'package:sync_center_mobile/features/home/ui/cubits/profile_cubit/profile_cubit.dart';
 import 'package:sync_center_mobile/features/home/ui/screens/calender_screen.dart';
-import 'package:sync_center_mobile/features/home/ui/screens/notifications_screen.dart';
+import 'package:sync_center_mobile/features/home/ui/screens/profile_screen.dart';
 
 import '../../../../core/ui/theme/colors.dart';
 import '../../../../core/utils/animation.dart';
@@ -10,7 +11,6 @@ import '../../../../di/di.dart';
 import '../cubits/home_cubit/home_cubit.dart';
 import '../cubits/host_cubit/host_cubit.dart';
 import '../cubits/host_cubit/host_state.dart';
-import '../cubits/notifications_cubit/notifications_cubit.dart';
 import 'home_screen.dart';
 
 class HostScreen extends StatelessWidget {
@@ -41,12 +41,12 @@ class HostScreen extends StatelessWidget {
                 label: "MyProject",
               ),
               _bottomNavigationBarItem(
-                icon: Icons.notifications_active_outlined,
-                label: "Notifications",
-              ),
-              _bottomNavigationBarItem(
                 icon: Icons.calendar_month,
                 label: "Calender",
+              ),
+              _bottomNavigationBarItem(
+                icon: Icons.person_sharp,
+                label: "Profile",
               ),
             ],
             onTap: (index) {
@@ -66,15 +66,6 @@ class HostScreen extends StatelessWidget {
                 },
                 child: HomeScreen(),
               ),
-              BlocProvider<NotificationsCubit>(
-                create: (BuildContext context) {
-                  final calenderCubit = getIt.get<NotificationsCubit>()
-                    ..fetchNotifications();
-                  return calenderCubit;
-                },
-                child: const NotificationsScreen(),
-              ),
-
               BlocProvider<CalenderCubit>(
                 create: (BuildContext context) {
                   final calenderCubit = getIt.get<CalenderCubit>()
@@ -82,6 +73,14 @@ class HostScreen extends StatelessWidget {
                   return calenderCubit;
                 },
                 child: CalenderScreen(),
+              ),
+              BlocProvider<ProfileCubit>(
+                create: (BuildContext context) {
+                  final profileCubit = getIt.get<ProfileCubit>()
+                    ..fetchProfile();
+                  return profileCubit;
+                },
+                child:  ProfileScreen(),
               ),
             ],
           ),

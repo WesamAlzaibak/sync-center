@@ -4,7 +4,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/ui/theme/colors.dart';
 import '../../../../core/utils/date.dart';
-import '../../../firebase/domain/entities/fcm_notification.dart';
+import '../../domain/entities/fcm_notification.dart';
 
 class NotificationItem extends StatelessWidget {
   const NotificationItem({

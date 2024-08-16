@@ -63,6 +63,7 @@ dependencies:
   mime: ^1.0.5
   http_parser: ^4.0.2
   syncfusion_flutter_calendar: ^26.2.8
+  image_picker: ^1.0.8
 
 dev_dependencies:
   flutter_test:

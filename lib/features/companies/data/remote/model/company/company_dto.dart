@@ -14,8 +14,6 @@ class CompanyDto {
   @JsonKey(name: "email")
   final String email;
 
-  //@JsonKey(name: "location")
-  // final String location;
   @JsonKey(name: "phone")
   final String phoneNumber;
 

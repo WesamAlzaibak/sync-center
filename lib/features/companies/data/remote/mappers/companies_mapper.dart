@@ -11,7 +11,6 @@ extension CompanyDtoX on CompanyDto {
         email: email,
         phoneNumber: phoneNumber,
         employeesNumber: employeesNumber,
-        //location: location,
         logo: logo.isEmpty
             ? ""
             : logo.replaceAll("http://192.168.146.1:8000", ApiRoutes.devApi),

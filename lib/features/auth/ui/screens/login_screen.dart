@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sync_center_mobile/core/ui/reusables/scaffolds/auth_scaffold.dart';
+import 'package:sync_center_mobile/features/home/ui/screens/host%20screen.dart';
 
 import '../../../../core/ui/reusables/buttons/default_button.dart';
 import '../../../../core/ui/reusables/snackbars/default_snack_bar.dart';
@@ -63,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
         BlocListener<LoginCubit, LoginState>(
           listener: (BuildContext context, state) {
             if (state is LoginSuccessState) {
-                context.go(HomeScreen.route);
+                context.go(HostScreen.route);
             }
           },
         ),

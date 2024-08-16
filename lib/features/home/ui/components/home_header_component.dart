@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../core/ui/theme/colors.dart';
 
 class HomeHeaderComponent extends StatelessWidget {
-  const HomeHeaderComponent({super.key, required this.userName, required this.icon, required this.onIconPressed, required this.isHomeScreen});
+  const HomeHeaderComponent({super.key, required this.userName, required this.icon, required this.onIconPressed});
 
   final String userName;
   final IconData icon;
   final void Function() onIconPressed;
-  final bool isHomeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class HomeHeaderComponent extends StatelessWidget {
                     overflow: TextOverflow.ellipsis),
               ),
             ),
-            isHomeScreen?const SizedBox(): Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const SizedBox(

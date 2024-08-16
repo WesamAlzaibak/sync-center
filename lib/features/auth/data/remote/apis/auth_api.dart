@@ -1,5 +1,11 @@
+import 'package:dio/dio.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mime/mime.dart';
+import 'package:sync_center_mobile/features/auth/data/remote/models/profile/profile_dto.dart';
 
+import '../../../../../core/data/models/normal_response.dart';
 import '../../../../../core/data/remote/remote_manager.dart';
 import '../models/forget_password/forget_password_credentials_dto.dart';
 import '../models/login/login_credentials/login_credentials_dto.dart';
@@ -23,11 +29,10 @@ class AuthApi {
       "/user/login",
       body: userCredentialsDto,
     );
-    if(response.data!["success"]) {
+    if (response.data!["success"]) {
       final normalResponse = UserSystemEntriesDto.fromJson(response.data!);
       return normalResponse;
-    }
-    else{
+    } else {
       return response.data!["message"]["email"][0];
     }
   }
@@ -70,4 +75,28 @@ class AuthApi {
     );
   }
 
+  Future<ProfileDto> getProfile() async {
+    final response = await _remoteManager.request<Map<String, dynamic>>(
+      RequestMethod.get,
+      "/user/profile",
+    );
+    final normalResponse = NormalResponse.fromJson(response.data ?? {},
+        (data) => ProfileDto.fromJson(data as Map<String, dynamic>));
+    return normalResponse.data;
+  }
+
+  Future<void> updateProfileImage(XFile file) async {
+    final memeType = lookupMimeType(file.path);
+    final type = memeType?.split("/").first ?? "";
+    final subtype = memeType?.split("/").last ?? "";
+    final formData = FormData.fromMap({
+      "image": await MultipartFile.fromFile(file.path,
+          filename: file.name, contentType: MediaType(type, subtype)),
+    });
+    await _remoteManager.request<Map<String, dynamic>>(
+      RequestMethod.post,
+      "/user/profile/update-image",
+      body: formData,
+    );
+  }
 }

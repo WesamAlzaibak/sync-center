@@ -45,6 +45,10 @@ import 'package:sync_center_mobile/features/auth/ui/blocs/reset_password_verific
     as _i40;
 import 'package:shared_preferences/shared_preferences.dart' as _i8;
 
+import '../features/auth/domain/usecases/get_profile_use_case.dart' as _i57;
+import '../features/auth/domain/usecases/logout_use_case.dart' as _i58;
+import '../features/auth/domain/usecases/update_profile_image_use_case.dart'
+    as _i59;
 import '../features/companies/data/remote/apis/company_api.dart' as _i33;
 import '../features/companies/data/remote/repositories/company_remote_repository.dart'
     as _i34;
@@ -65,9 +69,11 @@ import '../features/firebase/data/repositories/firebase_repository.dart'
 import '../features/firebase/domain/usecases/get_notifications_use_case.dart'
     as _i39;
 
+import '../features/firebase/ui/cubits/notifications_cubit/notifications_cubit.dart'
+    as _i40;
 import '../features/home/ui/cubits/calender_cubit/calender_cubit.dart' as _i53;
 import '../features/home/ui/cubits/home_cubit/home_cubit.dart' as _i31;
-import '../features/home/ui/cubits/notifications_cubit/notifications_cubit.dart' as _i40;
+import '../features/home/ui/cubits/profile_cubit/profile_cubit.dart' as _i60;
 import '../features/meetings/data/remote/api/meetings_api.dart' as _i50;
 import '../features/meetings/data/remote/repositories/meetings_repository.dart'
     as _i51;
@@ -236,6 +242,19 @@ extension GetItInjectableX on _i1.GetIt {
           acceptRejectMeetingUseCase: gh<_i54.AcceptRejectMeetingUseCase>(),
           deleteMeetingUseCase: gh<_i55.DeleteMeetingUseCase>(),
           createMeetingUseCase: gh<_i56.CreateMeetingUseCase>(),
+        ));
+    gh.factory<_i57.GetProfileUseCase>(() => _i57.GetProfileUseCase(
+        authRemoteRepository: gh<_i14.AuthRemoteRepository>()));
+    gh.factory<_i58.LogoutUseCase>(() => _i58.LogoutUseCase(
+        authLocalRepository: gh<_i31.AuthLocalRepository>()));
+    gh.factory<_i59.UpdateProfileImageUseCase>(() =>
+        _i59.UpdateProfileImageUseCase(
+            authRemoteRepository: gh<_i14.AuthRemoteRepository>()));
+    gh.factory<_i60.ProfileCubit>(() => _i60.ProfileCubit(
+          getProfileUseCase: gh<_i57.GetProfileUseCase>(),
+          getCompanyUseCase: gh<_i35.GetCompanyUseCase>(),
+          logoutUseCase: gh<_i58.LogoutUseCase>(),
+          updateProfileImageUseCase: gh<_i59.UpdateProfileImageUseCase>(),
         ));
     return this;
   }

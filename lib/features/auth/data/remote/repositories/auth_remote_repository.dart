@@ -1,7 +1,10 @@
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sync_center_mobile/features/auth/data/remote/mappers/profile_mapper.dart';
 import 'package:sync_center_mobile/features/auth/data/remote/mappers/user_mapper.dart';
 
 import '../../../../../core/utils/result.dart';
+import '../../../domain/models/profile.dart';
 import '../../../domain/models/user.dart';
 import '../apis/auth_api.dart';
 import '../models/forget_password/forget_password_credentials_dto.dart';
@@ -69,12 +72,25 @@ class AuthRemoteRepository {
   }
 
   Future<Result<void>> requestResetPassword({required String email}) async {
-    final forgetPasswordRequestDto =
-        ForgetPasswordCredentialsDto(email: email);
+    final forgetPasswordRequestDto = ForgetPasswordCredentialsDto(email: email);
     return await asyncRunCatching<void>(() async {
       return await _authApi.requestResetPassword(
         forgetPasswordCredentialsDto: forgetPasswordRequestDto,
       );
+    });
+  }
+
+  Future<Result<Profile>> getProfile() async {
+    return await asyncRunCatching<Profile>(() async {
+      final profileDto = await _authApi.getProfile();
+      final profile = profileDto.toProfile();
+      return profile;
+    });
+  }
+
+  Future<Result<void>> updateProfileImage(XFile file) async {
+    return await asyncRunCatching<void>(() async {
+      return await _authApi.updateProfileImage(file);
     });
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sync_center_mobile/features/firebase/ui/screens/notifications_screen.dart';
 import 'package:sync_center_mobile/features/home/ui/components/home_header_component.dart';
 import 'package:sync_center_mobile/features/home/ui/components/projects_list_view.dart';
 import 'package:sync_center_mobile/features/projects/ui/screens/project_details_screen.dart';
@@ -86,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                   left: 0,
                   right: 0,
                   child: HomeHeaderComponent(
-                    userName: state.username, icon: Icons.notifications_sharp,onIconPressed: () {  },isHomeScreen: true,
+                    userName: state.username, icon: Icons.notifications_sharp,onIconPressed: ()=>context.push(NotificationsScreen.route)
                   ),
                 ),
               ],
