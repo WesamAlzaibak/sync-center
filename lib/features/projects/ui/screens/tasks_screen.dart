@@ -70,7 +70,6 @@ class TasksScreen extends StatelessWidget {
               edgeOffset: 0,
               key: _refreshIndicatorKey,
               color: SyncColors.darkBlue,
-              //to do here
               onRefresh: () async {},
               child: SingleChildScrollView(
                 child: Column(
