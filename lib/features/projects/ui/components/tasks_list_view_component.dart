@@ -9,19 +9,17 @@ import '../../utils/task_type_utils.dart';
 class TasksGridView extends StatelessWidget {
   final List<Task> tasks;
   final void Function(int) onTaskClicked;
-  final TaskType type;
   final bool isLoading;
 
   const TasksGridView({
     super.key,
     required this.tasks,
     required this.onTaskClicked,
-    required this.type,
     required this.isLoading,
   });
 
   bool shouldDisplayTask(Task task) {
-    return task.type == type || type == TaskType.all;
+    return task.type == TaskType.done;
   }
 
   @override
@@ -89,7 +87,7 @@ class _TaskItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     color: isLoading
                         ? SyncColors.lightBlue
-                        : TaskTypeUtils.taskTypeColor(type),
+                        : SyncColors.green,
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -111,10 +109,10 @@ class _TaskItem extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             "status: ",
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -125,11 +123,11 @@ class _TaskItem extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            TaskTypeUtils.taskTypeText(type),
+                            "Done Tasks",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               overflow: TextOverflow.ellipsis,
-                              color: TaskTypeUtils.taskTypeColor(type),
+                              color: SyncColors.green,
                               fontWeight: FontWeight.w700,
                               fontSize: 14,
                             ),

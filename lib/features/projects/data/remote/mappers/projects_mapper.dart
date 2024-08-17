@@ -10,6 +10,7 @@ extension ProjectDtoX on ProjectDto {
         inProgressCount: inProgressCount,
         toReviewCount: toReviewCount,
         doneCount: doneCount,
+        filesCount: filesCount,
         createdDate: DateTime.parse(createdDate),
         logo: logo.replaceAll(
             "http://192.168.146.1:8000", ApiRoutes.devApi),

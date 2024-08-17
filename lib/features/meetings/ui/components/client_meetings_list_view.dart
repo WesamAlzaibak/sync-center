@@ -291,7 +291,7 @@ class MeetingsItems extends StatelessWidget {
         ),
         isLoading
             ? const SizedBox()
-            : meeting.statusName == StatusNameEnum.accepted||(meeting.statusName == StatusNameEnum.pending&&meeting.requesterType=="User")
+            : (meeting.statusName == StatusNameEnum.pending&&meeting.requesterType=="User")
                 ? Positioned(
                     right: 16,
                     top: 16,

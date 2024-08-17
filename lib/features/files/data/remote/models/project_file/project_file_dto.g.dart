@@ -13,7 +13,7 @@ ProjectFileDto _$ProjectFileDtoFromJson(Map<String, dynamic> json) =>
       userName: json['creator_name'] as String,
       userPicture: json['creator_name'] as String? ??
           '',
-      date: json['createdAt'] as String,
+      date: json['created_at'] as String,
     );
 
 Map<String, dynamic> _$ProjectFileDtoToJson(ProjectFileDto instance) =>
@@ -22,5 +22,5 @@ Map<String, dynamic> _$ProjectFileDtoToJson(ProjectFileDto instance) =>
       'url': instance.url,
       'creator_name': instance.userName,
       'creator_image': instance.userPicture,
-      'createdAt': instance.date,
+      'created_at': instance.date,
     };

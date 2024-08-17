@@ -14,6 +14,7 @@ ProjectDto _$ProjectDtoFromJson(Map<String, dynamic> json) => ProjectDto(
       inProgressCount: (json['doing_count'] as num).toInt(),
       toReviewCount: (json['tocheck_count'] as num).toInt(),
       doneCount: (json['done_count'] as num).toInt(),
+      filesCount: (json['files_count'] as num).toInt(),
       logo: json['logo'] as String? ??
           'https://img.freepik.com/free-photo/view-child-hair-salon_23-2150462483.jpg',
       description: json['description'] as String,
@@ -29,5 +30,6 @@ Map<String, dynamic> _$ProjectDtoToJson(ProjectDto instance) =>
       'doing_count': instance.inProgressCount,
       'tocheck_count': instance.toReviewCount,
       'done_count': instance.doneCount,
+          'files_count': instance.filesCount,
       'description': instance.description,
     };

@@ -93,4 +93,10 @@ class AuthRemoteRepository {
       return await _authApi.updateProfileImage(file);
     });
   }
+
+  Future<Result<void>> logout() async {
+    return await asyncRunCatching<void>(() async {
+      return await _authApi.logout();
+    });
+  }
 }

@@ -93,9 +93,9 @@ class FilesItems extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(
+                  Center(
                     child: Text(
-                      "published by Wesam Alzaibak",
+                      "published by ${projectFile.userName}",
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 16,

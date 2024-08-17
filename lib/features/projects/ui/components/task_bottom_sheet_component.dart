@@ -74,9 +74,9 @@ class TaskBottomSheetComponent extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Row(
+            const Row(
               children: [
-                const Text(
+                Text(
                   "Task Type: ",
                   style: TextStyle(
                     color: SyncColors.black,
@@ -86,9 +86,9 @@ class TaskBottomSheetComponent extends StatelessWidget {
                   ),
                 ),
                 Text(
-                 TaskTypeUtils.taskTypeText(task.type),
+                 "Done Tasks",
                   style: TextStyle(
-                    color: TaskTypeUtils.taskTypeColor(task.type),
+                    color: SyncColors.green,
                     fontWeight: FontWeight.w500,
                     fontSize: 18,
                     overflow: TextOverflow.ellipsis,

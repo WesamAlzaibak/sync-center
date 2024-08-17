@@ -51,7 +51,7 @@ class AuthApi {
       {required ResendResetPasswordCodeDto resendResetPasswordCodeDto}) async {
     await _remoteManager.request<Map<String, dynamic>>(
       RequestMethod.post,
-      "/auth/forgot-password",
+      "/auth/reset-password",
       body: resendResetPasswordCodeDto,
     );
   }
@@ -97,6 +97,13 @@ class AuthApi {
       RequestMethod.post,
       "/user/profile/update-image",
       body: formData,
+    );
+  }
+
+  Future<void> logout() async {
+    await _remoteManager.request<Map<String, dynamic>>(
+      RequestMethod.get,
+      "/admin/logout?all_devices=true",
     );
   }
 }

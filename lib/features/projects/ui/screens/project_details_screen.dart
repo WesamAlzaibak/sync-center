@@ -73,8 +73,8 @@ class ProjectDetailsScreen extends StatelessWidget {
                             TasksComponent(
                               toDo: state.project.todoCount,
                               doing: state.project.inProgressCount,
-                              done: state.project.toReviewCount,
-                              reviewing: state.project.doneCount,
+                              done: state.project.doneCount,
+                              reviewing: state.project.toReviewCount,
                               onClick: () => context.push(TasksScreen.route,
                                   extra: {
                                     "projectId": projectId,
@@ -85,7 +85,7 @@ class ProjectDetailsScreen extends StatelessWidget {
                               height: 10,
                             ),
                             FoldersFilesCountComponent(
-                              files: 16,
+                              files: state.project.filesCount,
                               onClick: () => context
                                   .push(ProjectFilesScreen.route, extra: {
                                 "projectId": projectId,

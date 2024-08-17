@@ -94,25 +94,13 @@ class CompanyDetailsScreen extends StatelessWidget {
                                   height: 20,
                                 ),
                                 Center(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        state.company.name,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 26,
-                                          color: SyncColors.black,
-                                        ),
-                                      ),
-                                      const Text(
-                                        "Damascus-Free Area",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
-                                          color: SyncColors.grey,
-                                        ),
-                                      ),
-                                    ],
+                                  child: Text(
+                                    state.company.name,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 26,
+                                      color: SyncColors.black,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(

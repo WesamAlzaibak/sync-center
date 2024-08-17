@@ -16,7 +16,7 @@ class ProjectFileDto {
       defaultValue:
       "")
   final String userPicture;
-  @JsonKey(name: "createdAt")
+  @JsonKey(name: "created_at")
   final String date;
 
   ProjectFileDto({

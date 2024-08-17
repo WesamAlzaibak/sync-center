@@ -246,7 +246,9 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i57.GetProfileUseCase>(() => _i57.GetProfileUseCase(
         authRemoteRepository: gh<_i14.AuthRemoteRepository>()));
     gh.factory<_i58.LogoutUseCase>(() => _i58.LogoutUseCase(
-        authLocalRepository: gh<_i31.AuthLocalRepository>()));
+        authLocalRepository: gh<_i31.AuthLocalRepository>(),
+      authRemoteRepository: gh<_i14.AuthRemoteRepository>(),
+    ));
     gh.factory<_i59.UpdateProfileImageUseCase>(() =>
         _i59.UpdateProfileImageUseCase(
             authRemoteRepository: gh<_i14.AuthRemoteRepository>()));

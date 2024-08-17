@@ -18,6 +18,8 @@ class ProjectDto {
   final int toReviewCount;
   @JsonKey(name: "done_count")
   final int doneCount;
+  @JsonKey(name: "files_count")
+  final int filesCount;
   @JsonKey(name: "created_at")
   final String createdDate;
   @JsonKey(
@@ -32,6 +34,7 @@ class ProjectDto {
     required this.inProgressCount,
     required this.toReviewCount,
     required this.doneCount,
+    required this.filesCount,
     required this.createdDate,
     required this.id,
     required this.logo,

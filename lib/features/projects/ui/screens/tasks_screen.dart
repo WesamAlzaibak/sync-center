@@ -98,15 +98,11 @@ class TasksScreen extends StatelessWidget {
                         children: [
                           Column(
                             children: [
-                              const SizedBox(
-                                height: 70,
-                              ),
                               TasksGridView(
                                   tasks: state is ProjectTasksSuccessState
                                       ? state.tasks
                                       : [],
                                   isLoading: state is ProjectTasksLoadingState,
-                                  type: state.currentType,
                                   onTaskClicked: (id) {
                                     showModalBottomSheet(
                                       context: context,
@@ -130,84 +126,6 @@ class TasksScreen extends StatelessWidget {
                                   }
                               ),
                             ],
-                          ),
-                          Container(
-                            width: 250,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.white,
-                            ),
-                            child: ExpansionTile(
-                              textColor: SyncColors.black,
-                              iconColor: SyncColors.darkBlue,
-                              controlAffinity: ListTileControlAffinity
-                                  .leading,
-                              title: Text(
-                                (state.currentType) == TaskType.all
-                                    ? "All Project Tasks"
-                                    : (state.currentType) == TaskType.toDo
-                                    ? "ToDo Tasks"
-                                    : (state.currentType) ==
-                                    TaskType.inProgress
-                                    ? "InProgress Tasks"
-                                    : (state.currentType ==
-                                    TaskType.toReview)
-                                    ? "ToReview Tasks"
-                                    : "Done Tasks",
-                                style: const TextStyle(
-                                  color: SyncColors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              children: [
-                                ChooseTaskTypeComponent(
-                                  onClick: () =>
-                                      context
-                                          .read<ProjectTasksCubit>()
-                                          .toggleTaskType(
-                                          taskType: TaskType.all),
-                                  title: 'All Project Tasks',
-                                  titleColor: SyncColors.black,
-                                ),
-                                ChooseTaskTypeComponent(
-                                  onClick: () =>
-                                      context
-                                          .read<ProjectTasksCubit>()
-                                          .toggleTaskType(
-                                          taskType: TaskType.toDo),
-                                  title: 'ToDo Tasks',
-                                  titleColor: SyncColors.red,
-                                ),
-                                ChooseTaskTypeComponent(
-                                  onClick: () =>
-                                      context
-                                          .read<ProjectTasksCubit>()
-                                          .toggleTaskType(
-                                          taskType: TaskType.inProgress),
-                                  title: 'InProgress Tasks',
-                                  titleColor: SyncColors.lightBlue,
-                                ),
-                                ChooseTaskTypeComponent(
-                                  onClick: () =>
-                                      context
-                                          .read<ProjectTasksCubit>()
-                                          .toggleTaskType(
-                                          taskType: TaskType.toReview),
-                                  title: 'ToReview Tasks',
-                                  titleColor: SyncColors.lightBlue_1,
-                                ),
-                                ChooseTaskTypeComponent(
-                                  onClick: () =>
-                                      context
-                                          .read<ProjectTasksCubit>()
-                                          .toggleTaskType(
-                                          taskType: TaskType.done),
-                                  title: 'Done Tasks',
-                                  titleColor: SyncColors.green,
-                                ),
-                              ],
-                            ),
                           ),
                         ],
                       ),

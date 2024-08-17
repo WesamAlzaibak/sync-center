@@ -7,6 +7,7 @@ class Project extends Equatable {
   final int inProgressCount;
   final int toReviewCount;
   final int doneCount;
+  final int filesCount;
   final DateTime createdDate;
   final String logo;
   final String description;
@@ -19,6 +20,7 @@ class Project extends Equatable {
     required this.inProgressCount,
     required this.toReviewCount,
     required this.doneCount,
+    required this.filesCount,
     required this.logo,
     required this.description,
   });
@@ -32,6 +34,7 @@ class Project extends Equatable {
         inProgressCount,
         toReviewCount,
         doneCount,
+    filesCount,
         logo,
     description,
       ];
