@@ -32,8 +32,8 @@ class FilesListViewComponent extends StatelessWidget {
                 date: DateTime(2024,8,7),
               ),
               isLoading: true,
-              fileImageUrl: null,
-              userImageUrl: null,
+              fileImageUrl: "",
+              userImageUrl: "",
               onFileClick: () {},
             )
           : FilesItems(
@@ -97,7 +97,7 @@ class FilesItems extends StatelessWidget {
                     child: Text(
                       "published by ${projectFile.userName}",
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: SyncColors.black,

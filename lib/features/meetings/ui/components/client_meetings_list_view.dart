@@ -42,6 +42,7 @@ class ClientMeetingsListViewComponent extends StatelessWidget {
                     email: "example@gmail.com",
                     phoneNumber: "+963995967227",
                     logo: "",
+                    description: "",
                     projectsNumber: 0,
                     employeesNumber: 0),
               ),

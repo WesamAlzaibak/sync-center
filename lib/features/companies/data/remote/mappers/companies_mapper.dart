@@ -7,7 +7,7 @@ extension CompanyDtoX on CompanyDto {
         name: name,
         id: id,
         projectsNumber: projectsNumber,
-        //description: description,
+        description: description,
         email: email,
         phoneNumber: phoneNumber,
         employeesNumber: employeesNumber,

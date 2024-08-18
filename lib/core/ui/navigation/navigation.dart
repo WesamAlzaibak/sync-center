@@ -116,7 +116,7 @@ final router = GoRouter(initialLocation: LoginScreen.route, routes: [
       return BlocProvider<NotificationsCubit>(
         create: (BuildContext context) {
           final notificationCubit = getIt.get<NotificationsCubit>()
-            ..fetchNotifications();
+            ..fetchNotificationsData();
           return notificationCubit;
         },
         child: const NotificationsScreen(),

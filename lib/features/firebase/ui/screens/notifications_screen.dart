@@ -82,8 +82,17 @@ class _NotificationsListView extends StatelessWidget {
         height: 1,
       ),
       itemBuilder: (context, index) {
-        return NotificationItem(
-            notification: notification[index], isLoading: isLoading);
+        return isLoading
+            ? NotificationItem(
+                notification: FcmNotification(
+                    id: -1,
+                    title: 'Testing Notification',
+                    description: 'This notification is for testing',
+                    date: DateTime.now(),
+                    isSeen: true),
+                isLoading: true)
+            : NotificationItem(
+                notification: notification[index], isLoading: false);
       },
       itemCount: isLoading ? 5 : notification.length,
     );

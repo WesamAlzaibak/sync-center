@@ -71,7 +71,7 @@ class CoverImageComponent extends StatelessWidget {
                         imageUrl: logoImageUrl,
                         width: 155,
                         height: 155,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                     ),
             ),

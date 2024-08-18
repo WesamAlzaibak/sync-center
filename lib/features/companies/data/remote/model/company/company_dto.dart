@@ -8,15 +8,12 @@ class CompanyDto {
   final int id;
   @JsonKey(name: "name")
   final String name;
-
-  // @JsonKey(name: "description")
-  // final String description;
+  @JsonKey(name: "description")
+  final String description;
   @JsonKey(name: "email")
   final String email;
-
   @JsonKey(name: "phone")
   final String phoneNumber;
-
   @JsonKey(name: "employees_count")
   final int employeesNumber;
   @JsonKey(name: "projects_count",defaultValue: 0)
@@ -27,9 +24,8 @@ class CompanyDto {
   CompanyDto({
     required this.name,
     required this.id,
-    // required this.description,
+    required this.description,
     required this.email,
-    // required this.location,
     required this.phoneNumber,
     required this.logo,
     required this.projectsNumber,

@@ -168,7 +168,7 @@ class ClientMeetingsScreen extends StatelessWidget {
                               .read<ClientMeetingsCubit>()
                               .acceptRejectMeeting(meetingId: id, status: 1),
                           isAccept: true,
-                          isDelete: true,
+                          isDelete: false,
                         ),
                         onMeetingRejectClick: (id) {
                           _showAlertDialog(

@@ -9,7 +9,6 @@ import '../../../../core/ui/reusables/buttons/default_back_button.dart';
 import '../../../../core/ui/reusables/snackbars/default_snack_bar.dart';
 import '../../../../core/ui/theme/colors.dart';
 import '../../../tasks/domain/entities/task.dart';
-import '../components/choose_task_type_component.dart';
 import '../components/task_bottom_sheet_component.dart';
 import '../cubits/tasks/tasks_cubit.dart';
 import '../cubits/tasks/tasks_state.dart';

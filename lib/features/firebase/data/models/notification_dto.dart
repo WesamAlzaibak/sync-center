@@ -10,7 +10,7 @@ class NotificationDto {
   final String title;
   @JsonKey(name: "body")
   final String description;
-  @JsonKey(name: "updatedAt")
+  @JsonKey(name: "updated_at")
   final String date;
   @JsonKey(name: "is_seen")
   final bool isSeen;

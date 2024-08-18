@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sync_center_mobile/features/auth/data/local/repositories/user_local_repository.dart';
 import 'package:sync_center_mobile/features/companies/domain/entities/company.dart';
 import 'package:sync_center_mobile/features/home/ui/cubits/profile_cubit/profile_state.dart';
 
@@ -17,16 +18,19 @@ class ProfileCubit extends Cubit<ProfileState> {
   final GetCompanyUseCase _getCompanyUseCase;
   final LogoutUseCase _logoutUseCase;
   final UpdateProfileImageUseCase _updateProfileImageUseCase;
+  final UserLocalRepository _userLocalRepository;
 
   ProfileCubit({
     required GetProfileUseCase getProfileUseCase,
     required GetCompanyUseCase getCompanyUseCase,
     required LogoutUseCase logoutUseCase,
     required UpdateProfileImageUseCase updateProfileImageUseCase,
+    required UserLocalRepository userLocalRepository,
   })  : _getCompanyUseCase = getCompanyUseCase,
         _getProfileUseCase = getProfileUseCase,
         _logoutUseCase = logoutUseCase,
   _updateProfileImageUseCase = updateProfileImageUseCase,
+  _userLocalRepository = userLocalRepository,
         super(const ProfileInitialState());
 
   Company company = const Company(
@@ -35,6 +39,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       email: "",
       phoneNumber: "",
       logo: "",
+      description: "",
       projectsNumber: 0,
       employeesNumber: 0);
   Profile profile = Profile(
@@ -47,7 +52,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> refreshProfile() async {
     final results = await Future.wait([
-      _getCompanyUseCase.call(1),
+      _getCompanyUseCase.call(_userLocalRepository.getUser().companyId),
       _getProfileUseCase.call(),
     ]);
     Result.evaluate(results).fold(

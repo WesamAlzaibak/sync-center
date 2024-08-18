@@ -42,7 +42,7 @@ class ProfileImageComponent extends StatelessWidget {
                         imageUrl: image,
                         width: 112.0,
                         height: 112.0,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                     ),
             ),

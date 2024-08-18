@@ -7,10 +7,12 @@ part 'user_system_entries_dto.g.dart';
 class UserSystemEntriesDto {
   @JsonKey(name: "name")
   final String name;
+  @JsonKey(name: "company_id")
+  final int companyId;
   @JsonKey(name: "access_token")
   final String token;
 
-  UserSystemEntriesDto({required this.name, required this.token});
+  UserSystemEntriesDto({required this.name, required this.token,required this.companyId});
 
   factory UserSystemEntriesDto.fromJson(Map<String, dynamic> json) =>
       _$UserSystemEntriesDtoFromJson(json);

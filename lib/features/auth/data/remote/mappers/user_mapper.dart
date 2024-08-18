@@ -6,6 +6,7 @@ import '../models/user/user_system_entries_dto.dart';
 extension UserSystemEntiresDtoX on UserSystemEntriesDto {
   User toUser() => User(
         name: name,
+        companyId: companyId,
         token: token,
       );
 }
@@ -13,10 +14,11 @@ extension UserSystemEntiresDtoX on UserSystemEntriesDto {
 extension UserDtoX on UserDto {
   User toUser() => User(
         name: name,
+        companyId: companyId,
         token: "",
       );
 }
 
 extension UserX on User {
-  UserPref toUserPref() => UserPref(name: name);
+  UserPref toUserPref() => UserPref(name: name,companyId: companyId);
 }

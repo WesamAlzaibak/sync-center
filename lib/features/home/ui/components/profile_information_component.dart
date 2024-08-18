@@ -112,7 +112,7 @@ class ProfileInformationComponent extends StatelessWidget {
                             companyLogo,
                             width: 70.0,
                             height: 70.0,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ),
@@ -148,9 +148,10 @@ class ProfileInformationComponent extends StatelessWidget {
                       Text(
                         companyEmail,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
                           color: SyncColors.black,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],

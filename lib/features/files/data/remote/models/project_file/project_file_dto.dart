@@ -12,7 +12,7 @@ class ProjectFileDto {
   @JsonKey(name: "userName")
   final String userName;
   @JsonKey(
-      name: "creator_name",
+      name: "creator_image",
       defaultValue:
       "")
   final String userPicture;

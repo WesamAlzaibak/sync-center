@@ -84,7 +84,7 @@ class CompanyDetailsScreen extends StatelessWidget {
                                                         : state.company.logo,
                                                 width: 100.0,
                                                 height: 100.0,
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.fill,
                                               ),
                                             ),
                                     ),
@@ -106,9 +106,9 @@ class CompanyDetailsScreen extends StatelessWidget {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                const Text(
-                                  "The R-Link team designs websites and applications focused on elevating the user experience and promoting growth.\nNo alternative text description for this image.",
-                                  style: TextStyle(
+                                Text(
+                                  state.company.description,
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 12,
                                     color: SyncColors.black,

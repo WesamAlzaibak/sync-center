@@ -11,7 +11,7 @@ ProjectFileDto _$ProjectFileDtoFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String,
       id: (json['id'] as num).toInt(),
       userName: json['creator_name'] as String,
-      userPicture: json['creator_name'] as String? ??
+      userPicture: json['creator_image'] as String? ??
           '',
       date: json['created_at'] as String,
     );

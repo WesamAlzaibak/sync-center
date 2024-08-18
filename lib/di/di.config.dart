@@ -246,18 +246,18 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i57.GetProfileUseCase>(() => _i57.GetProfileUseCase(
         authRemoteRepository: gh<_i14.AuthRemoteRepository>()));
     gh.factory<_i58.LogoutUseCase>(() => _i58.LogoutUseCase(
-        authLocalRepository: gh<_i31.AuthLocalRepository>(),
-      authRemoteRepository: gh<_i14.AuthRemoteRepository>(),
-    ));
+          authLocalRepository: gh<_i31.AuthLocalRepository>(),
+          authRemoteRepository: gh<_i14.AuthRemoteRepository>(),
+        ));
     gh.factory<_i59.UpdateProfileImageUseCase>(() =>
         _i59.UpdateProfileImageUseCase(
             authRemoteRepository: gh<_i14.AuthRemoteRepository>()));
     gh.factory<_i60.ProfileCubit>(() => _i60.ProfileCubit(
-          getProfileUseCase: gh<_i57.GetProfileUseCase>(),
-          getCompanyUseCase: gh<_i35.GetCompanyUseCase>(),
-          logoutUseCase: gh<_i58.LogoutUseCase>(),
-          updateProfileImageUseCase: gh<_i59.UpdateProfileImageUseCase>(),
-        ));
+        getProfileUseCase: gh<_i57.GetProfileUseCase>(),
+        getCompanyUseCase: gh<_i35.GetCompanyUseCase>(),
+        logoutUseCase: gh<_i58.LogoutUseCase>(),
+        updateProfileImageUseCase: gh<_i59.UpdateProfileImageUseCase>(),
+        userLocalRepository: gh<_i28.UserLocalRepository>()));
     return this;
   }
 }

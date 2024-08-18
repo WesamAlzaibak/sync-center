@@ -21,6 +21,8 @@ class CalenderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return BlocListener<CalenderCubit, CalenderState>(
       listenWhen: (previousState, state) {
         return previousState is! CalenderErrorState &&
@@ -51,7 +53,7 @@ class CalenderScreen extends StatelessWidget {
                   child: const Icon(
                     Icons.calendar_month,
                     size: 30,
-                    color: SyncColors.darkBlue,
+                    color: SyncColors.lightBlue,
                   ),
                 ),
                 const SizedBox(
@@ -128,12 +130,13 @@ class CalenderScreen extends StatelessWidget {
 class MeetingDataSource extends CalendarDataSource {
   MeetingDataSource(List<Meeting> source) {
     appointments = source.map((meeting) {
-      return MeetingAppointment(
+      final appointment = MeetingAppointment(
         meeting: meeting,
         startTime: meeting.startDate,
         endTime: meeting.startDate.add(const Duration(hours: 2)),
         subject: meeting.title,
       );
+      return appointment;
     }).toList();
   }
 }
@@ -143,12 +146,8 @@ class MeetingAppointment extends Appointment {
 
   MeetingAppointment({
     required this.meeting,
-    required DateTime startTime,
-    required DateTime endTime,
-    required String subject,
-  }) : super(
-          startTime: startTime,
-          endTime: endTime,
-          subject: subject,
-        );
+    required super.startTime,
+    required super.endTime,
+    required super.subject,
+  });
 }

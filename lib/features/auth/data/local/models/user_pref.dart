@@ -6,9 +6,12 @@ part 'user_pref.g.dart';
 class UserPref {
   @JsonKey(name: "name")
   final String name;
+  @JsonKey(name: "company_id")
+  final int companyId;
 
   const UserPref({
-   required this.name
+   required this.name,
+    required this.companyId,
   });
 
   factory UserPref.fromJson(Map<String, dynamic> json) =>

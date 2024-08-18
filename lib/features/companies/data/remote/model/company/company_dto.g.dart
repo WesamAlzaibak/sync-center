@@ -9,7 +9,7 @@ part of 'company_dto.dart';
 CompanyDto _$CompanyDtoFromJson(Map<String, dynamic> json) => CompanyDto(
       name: json['name'] as String,
       id: (json['id'] as num).toInt(),
-      // description: json["description"] as String,
+      description: json["description"] as String,
       email: json["email"] as String,
       phoneNumber: json["phone"] as String,
       logo: json['logo'] as String,
@@ -22,7 +22,7 @@ Map<String, dynamic> _$CompanyDtoToJson(CompanyDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      //'description': instance.description,
+      'description': instance.description,
       'email': instance.email,
       'phone': instance.phoneNumber,
       'employees_count': instance.employeesNumber,
