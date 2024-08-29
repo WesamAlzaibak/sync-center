@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "706747477585",
+    "project_id": "sync-center-mobile",
+    "storage_bucket": "sync-center-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706747477585:android:b099b4249d261200229270",
+        "android_client_info": {
+          "package_name": "com.example.sync_center_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY68VnV7AQY7TUuw2IEFAE_DvLII-nb2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
